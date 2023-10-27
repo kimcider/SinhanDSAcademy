@@ -33,7 +33,6 @@ public class MemberServlet extends HttpServlet {
 		vo.setName(searchWord);
 		List list = dao.listMembers(vo);
 		
-		request.setAttribute("hi", "hi");
 		//데이터 저장
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/member/member.jsp");
