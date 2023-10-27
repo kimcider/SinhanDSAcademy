@@ -1,0 +1,12 @@
+<!-- 버튼을 클릭하면 b.html로 이동하고,
+    b.html에서 버튼을 클릭하면 다시 이전 사이트로 이동 -->
+<html lang="en">
+<body>
+    <input type="button" id="btn" value="b.html로 이동">
+    <script>
+        document.querySelector('#btn').onclick=()=>{
+            location.href='b.html';
+        }
+    </script>
+</body>
+</html>

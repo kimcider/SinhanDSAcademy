@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- jqueryUI를 추가해주면 animate()안에 css도 변경 가능하다. -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <style>
+        #box {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+
+            /* position을 꼭 relative로 설정해야 움직이는 것이 가능하다. */
+            position: relative;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $('#box').animate({
+                    // left: 500
+
+                    // width:200, 
+                    // height:200
+
+                    // width:'+=50',
+                    // height: '+=50',
+
+                    // 애니메이트 함수는 객체를 리턴하기때문에
+                    //오른쪽으로 이동한 이후에 아래로 이동하게하고싶으면 다음과같이
+                    // left100을 해준 후에 chaining을 해서 또 animate()함수를 넣어주면 된다.
+                    left: 100,
+                    //css변경
+                    'background-color': 'red'
+                }, 2000).animate({
+                    top: 100
+                }, 2000);
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+    <input type="button" value="버튼" id="btn">
+    <div id="box">박스</div>
+</body>
+
+</html>

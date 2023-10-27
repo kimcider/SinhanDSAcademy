@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //함수를 바로실행시켜버린다
+        (function ccc() {
+            console.log('ccc');
+        })();
+
+        function aaa() {
+            console.log('aaa');
+        }
+
+        //함수를 매개변수로 받는 함수 (이를 callback함수라고 한다)
+        function ddd(f) {
+            f();//함수실행
+        }
+
+        //함수가 매개변수로 전달
+        ddd(aaa);
+
+        //익명함수
+        ddd(function () {
+            console.log('익명함수');
+        })
+
+        //화살표함수
+        ddd(() => {
+            console.log('화살표함수');
+        })
+
+        //가변인자
+        //매개변수개수만큼 배열로 처리
+        function eee() {
+            console.log(arguments);
+        }
+        eee(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+
+        // 함수가 덮어씌워지는 문제!!!!
+        console.log('함수가 덮어씌어지는 문제!');
+        function b(){
+            console.log('b');
+        }
+        function b(){
+            console.log('b2');
+        }
+        function f(){
+            b();
+        }
+        f();
+
+        // 이런식으로 함수 안에 선언해서 보다 확실하게 b()함수를 사용하는 것도 가능하다.
+        //지금 코드만 봐서는 함수를 쓰는 의미가 없어보이지만, 
+        //f()함수가 매우 길어지면 함수 내에서 b()를 재사용 할 수 있게된다.
+        function f(){
+            function b(){
+                console.log('b');
+            }
+            b();
+        }
+    </script>
+</body>
+
+</html>

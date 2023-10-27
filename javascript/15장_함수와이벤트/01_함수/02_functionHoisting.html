@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        aaa();//함수 호이스팅
+        //일반적인 함수 사용
+        function aaa() {
+            console.log('aaa');
+        } //여기는 실행문이 아니기 때문에 ;을 찍지 않았다.
+
+        // bbb(); //얘는 이상태에는 아직 function이 아니기 떄문에 에러가난다.
+        //익명 함수 사용
+        var bbb = function () { //변수 bbb에 function을 대입해주는것
+            console.log('bbb');
+        }; //여기는 실행문이여서 ;을 찍는다.
+        bbb();
+
+        
+
+    </script>
+</body>
+
+</html>

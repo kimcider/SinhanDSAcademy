@@ -1,0 +1,78 @@
+<!-- 
+    이거는 jquery랑은 상관없는거지만, 개발할 때 굉장히 유용할 것이다.
+    https://swiperjs.com/demos
+    이 사이트에서 원하는 것을 참조하면된다.
+    
+    이 페이지는
+    https://swiperjs.com/demos#default
+    default를 가져왔다.
+
+    여기서 이제 필요에 따라 사이트를 가공하면 된다.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="swiper main">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">slide 1</div>
+            <div class="swiper-slide">slide 2</div>
+            <div class="swiper-slide">slide 3</div>
+            <div class="swiper-slide">slide 4</div>
+            <div class="swiper-slide">slide 5</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".main", {});
+    </script>
+</body>
+
+</html>

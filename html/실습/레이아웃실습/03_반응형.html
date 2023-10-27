@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            box-sizing: border-box;
+            
+            border: 1px solid black;
+            background-color: #d3d3d3;
+        }
+
+
+        .outform {
+            margin: 0 auto;
+            width: 1000px;
+            text-align: center;
+        }
+
+        .header {
+            padding: 40px 0px;
+        }
+
+        .menu {
+            height: 40px;
+        }
+
+        .menu div {
+            width: 25%;
+            float: left;
+        }
+
+        .menu>ul {
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+
+        .menu>ul>div>li {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .menu>ul>div>li:hover {
+            background-color: white;
+            cursor: pointer;
+        }
+
+        /* 비동작코드
+        
+        .content-box{
+            padding: 100px 0px;
+        }
+        .content-box > div{
+            position:absolute;
+            float: left;
+            top:0px;
+            box-sizing: border-box;
+            height: 100%;
+            line-height: 200px;
+        }
+        .content-box > .submenu{
+            width: 30%;
+            left:0%;
+        }
+        .content-box > .content{
+            left:30%;
+            width: 70%;
+        }
+        
+        */
+        
+        .content-box > div{
+            text-align: center;
+            padding: 100px 0;
+            float: left;
+        }
+        .submenu{
+            width: 30%;
+        }
+        .content{
+            width: 70%;
+        }
+        
+        @media screen and (max-width:769px) {
+            .content-box>.submenu {
+                width: 100%;
+            }
+
+            .content-box>.content {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            clear: both;
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outform">
+        <div class="header">
+            <img src="/img/bgimg1.png" width="100" height="50">
+        </div>
+
+        <div class="menu">
+            <ul>
+                <div>
+                    <li>menu1</li>
+                </div>
+                <div>
+                    <li>menu2</li>
+                </div>
+                <div>
+                    <li>menu3</li>
+                </div>
+                <div>
+                    <li>menu4</li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <div class="submenu">submenu</div>
+            <div class="content">content</div>
+        </div>
+
+        <div class="footer">
+            footer
+        </div>
+    </div>
+</body>
+
+</html>

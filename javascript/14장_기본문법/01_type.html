@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS는 변수 선언과 할당이 구분되지 않기 때문에 이렇게 미리 선언하고 코딩하는 경우가 많다.
+        var name;
+        var int;
+        var float;
+        var ary;
+        var jsonObj;
+        var s;
+
+        name = '홍길동';
+        console.log('name: ' + name);
+        console.log('typeof name: ' + typeof name);
+        
+        int = 5;
+        console.log('int: ' + int);
+        
+        float = 5;
+        console.log('float: ' + float);
+        
+        ary = ['홍길동', 1, 3.14, ['newArray', 6]];
+        console.log(ary);
+        console.log('length of ary: ' + ary.length);
+        
+        jsonObj = {name:'홍길동', age:30};
+        console.log(jsonObj);
+
+        //함수
+        function sum(x, y){
+            console.log("계산중");
+            s = x + y;
+            return s;
+        }
+        console.log('sum(5, 3): \n' + sum(5, 3));
+
+        // JS의 ' + ' 연산은 굉장히 다양한 방식으로 작동된다 ㅡㅡ...
+        console.log('sum("안녕", "하세요"): \n' + sum('안녕', '하세요'));
+        console.log('sum([1, 2, 3], "반가워"): \n' + sum([1, 2, 3], "반가워"));
+
+        console.log('typeof sum: ' + typeof sum);
+        console.log('typeof sum(3, 5): ' + typeof sum(3, 5));
+
+        // 함수도 값이기 때문에 다음과 같은 코드가 가능하다
+        s = sum;
+        console.log('s = sum;\ns(10, 20): ' + s(10, 20));
+    </script>
+</body>
+</html>

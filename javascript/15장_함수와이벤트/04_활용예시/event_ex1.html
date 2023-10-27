@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>버튼 클릭횟수: <span id="cnt">0</span></h1>
+    <input type="button" value="버튼" id="btn">
+
+
+    <input type="button" value="팝업" id="popup">
+
+    <script>
+        let btn = document.querySelector('#btn');
+        btn.onclick=()=>{
+            let target = document.querySelector('#cnt');
+            let number = Number(target.innerHTML) + 1;
+            target.innerHTML = number;
+        }
+
+        //팝업띄우기
+        document.querySelector('#popup').addEventListener('click', ()=>{
+            window.open('http://naver.com', 'pop', 'width=300, height=300');
+        })
+    </script>
+</body>
+</html>

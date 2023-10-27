@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <script>
+        //스타일 확인
+        let style = $('h1').css('color')
+        console.log(style);
+
+        //스타일의 속성의 값을 설정
+        $('h1').css('color', 'blue');
+        
+        //여러 스타일을 설정하고 싶을 경우
+        $('h1').css({
+            color: 'pink',
+            fontWeight: 100
+            // ,'font-weight':100 //이렇게도 가능
+        });
+
+        //스타일 삭제?
+        $('h1').css('color', '');
+    </script>
+</body>
+</html>

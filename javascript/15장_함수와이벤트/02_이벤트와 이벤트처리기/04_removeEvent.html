@@ -1,0 +1,37 @@
+<html lang="en">
+<body>
+    <a href="http://naver.com" id="naver">기본 이벤트 제거했음. 제거 안하면 네이버로감</a>
+    <script>
+        //기본이벤트 제거
+        let link = document.querySelector('#naver');
+        link.onclick = function (e) {
+            alert(1);
+            e.preventDefault();
+        }
+    </script>
+
+    <div onclick="alert(1);">
+        <div onclick="alert(2);">
+            <a href="" onclick="alert(3);">
+                이벤트 전파 안막음
+            </a>
+        </div>
+    </div>
+    <div onclick="alert(1);">
+        <div onclick="alert(2);">
+            <a href="" id="target" onclick="alert(3);">
+                이벤트 전파 막음
+            </a>
+        </div>
+    </div>
+    <script>
+        //이벤트 전파 제거
+        let target = document.querySelector('#target');
+        target.onclick = function (e) {
+            e.stopPropagation();
+            alert('이벤트전파제거');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //JS는 클라이언트에서 동작하기 때문에 클라이언트의 PC시간과연동됨.
+
+        document.write(new Date() + "<br>");
+
+        let now = new Date();
+        let endDate = new Date(2024, 2, 29);
+
+        let gap = endDate.getTime() - now.getTime();
+        gap = Math.floor(gap / (1000 * 60 * 60 * 24));
+        document.write("종강까지 " + gap + '일 남았습니다.');
+    </script>
+
+
+    <div id="result"></div>
+    <script>
+        document.querySelector('#result').innerText='<b>종강</b>일까지남은일수: ' + gap;
+        document.querySelector('#result').innerHTML='<b>종강</b>일까지남은일수: ' + gap;
+    </script>
+</body>
+
+</html>

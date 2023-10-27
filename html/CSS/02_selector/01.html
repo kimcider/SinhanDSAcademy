@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 전체 선택자 */
+        *{  
+            /* 
+                모든 요소에 대해 적용 
+                일반적으로 초기화시 사용된다
+            */
+            /* color: red; */
+        }
+
+        /* 태그 선택자 */
+        h1{
+            color: red;
+        }
+
+        /* 아이디 선택자 */
+        #title{
+            /* id값이 "title"인 요소에 적용 */
+            color: blue;
+        }
+
+
+        /* 클래스 선택자 */
+        .content{
+            color: orange;
+        }
+
+        .bgyello{
+            background-color: yellow;
+        }
+
+        /* 속성 선택자 */
+        input[type=text]{
+            background-color: black;
+        }
+
+        input[type=password]{
+            background-color: blue;
+        }
+
+        /* 다중 선택자 */
+        h1, p, #parent > div{
+            color: red;
+            /* 이거 제목3이 안바뀌는거는 클래스가 태그보다 하위여서 안바뀌는듯?
+            위에 클래스에 대해서 파랑색으로 설정해서 */
+        }
+
+        /* ~이면서 ~인 클래스에 하고싶으면 */
+        span.content{
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>제목1</h1>
+    <h1>제목2</h1>
+    <h1 id="title">제목3</h1>
+    <p class="content">내용</p>
+    <div class="content">첨부파일</div>
+    <span class="content">작성일</span>
+    <!-- 한 요소에 여러개의 클래스를 지정할 수 있다. -->
+    <span class="content bgyello">클래스는 여러개 지정 가능</span>
+
+    <br><br>
+    <input type="text"><br>
+    <input type="password">
+
+
+
+</body>
+</html>

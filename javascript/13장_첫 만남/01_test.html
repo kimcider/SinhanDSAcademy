@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #heading {
+            color: blue;
+
+        }
+    </style>
+
+    <!-- 
+    <script>
+        var heading = document.querySelector('#heading');
+        // document: 내장객체
+        // querySelector: 메소드 안의 선택자로 요청을 해서 선택된 객체를 리턴. 
+        
+        console.log(heading);
+        //scirpt를 여기다 쓰면 id가 heading인놈이 아직 없기 때문에 null을 출력한다        
+    </script> 
+    -->
+</head>
+
+<body>
+    <div id="heading">이 텍스트를 클릭해보세요!</div>
+    
+    <!-- <script>
+        var heading = document.querySelector('#heading');
+        // document: 내장객체
+        // querySelector: 메소드 안의 선택자로 요청을 해서 선택된 객체를 리턴. 
+        
+        console.log(heading);
+        
+        heading.onclick = function(){
+            console.log('안녕하세요');
+            heading.style.color="red";
+        }
+    </script> -->
+    
+    
+    <div id="heading" onclick="document.querySelector('#heading').style.color='brown'">이 텍스트를 클릭해도 위에꺼가 색이 변하네?!</div>
+    <div id="heading" onclick="style.color='brown'">코드를 이렇게 짜면 얘를 클릭하면 얘가변함!</div>
+
+
+    <script src="./01_change-color.js"></script>
+</body>
+
+</html>

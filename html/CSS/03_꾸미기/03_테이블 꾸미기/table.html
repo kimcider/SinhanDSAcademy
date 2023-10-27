@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .collapse{
+            table-layout: fixed;
+            word-break: break-all;
+            border-collapse: collapse;
+            
+        }
+        
+        .seperate{
+            border-collapse: separate;
+            border-spacing: 10px;
+            height: 200px;
+            
+        }
+
+        td{
+            text-align: center; /* 수평 정렬 */
+            vertical-align: bottom; /* 수직 정렬 top, middle, bottom */
+        }
+    </style>
+</head>
+
+<body>
+    <table class="collapse" border="1" width="200">
+        <tr>
+            <td>안녕하세요 저는 홍길동입니다.</td>
+            <td>Hello_my_name_is_honggildong</td>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="seperate" border="1" width="200">
+        <tr>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+    </table>
+</body>
+</html>

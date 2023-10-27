@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 형제(동위) 선택자 */
+        /* 선택자 1 + 선택자 2 : 선택자1 바로 뒤에 있는 선택자2 */
+        /* 선택자 1 ~ 선택자 2 : 선택자1 뒤에 있는 선택자2 */
+        h1 + h2 {
+            color: rgb(255, 0, 0);
+        }
+
+        h1 ~ h2{
+            background-color: rgb(255, 166, 0);
+        }
+    </style>
+</head>
+<body>
+    
+    <hr>
+    <h1>제목1</h1>
+    <h2>제목2</h2>
+    <h2>제목3</h2>
+    <h2>제목4</h2>
+    
+</body>
+</html>

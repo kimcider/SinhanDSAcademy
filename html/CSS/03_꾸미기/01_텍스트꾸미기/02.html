@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{border:#000000 1px solid;}
+        .lheight{
+            text-align: center;
+
+            /* div박스 높이 설정 */
+            /* 아래와 같은 방식으로 위아래 정렬을 수행한다. */
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .shadow{
+            text-shadow: -2px -3px 3px blue;
+        }
+
+        .lowercase{
+            text-transform: lowercase;
+        }
+
+        .space4{
+            letter-spacing: 4px;
+        }
+        .space2{
+            letter-spacing: 2px;
+        }
+        .wordspace{
+            word-spacing: 10px;
+        }
+
+
+        /* 넘치는 경우 기본적으로는 아랫줄로 이동함.*/
+        .overbase{
+            width:200px;
+        }
+
+        /* 넘칠경우 그대로 칸을 넘어감 */
+        .over{
+            width:200px;
+            white-space: nowrap;
+        }
+
+        /* 넘치는 부분을 숨김 */
+        .overflow{
+            width:200px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* 이거는 자주쓰인다!! */
+        /* 넘칠경우 ...으로 처리 */
+        .over_ellipsis{
+            width:200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+        }
+
+
+        /* 들여쓰기 */
+        .indentation{
+            width: 200px;
+            text-indent: 10%;
+            text-indent: 10px;
+            text-indent: 2cm;
+        }
+
+
+        /* 
+            normal: 연속된 공백은 하나로 처리
+            nowrap: 연속된 공백은 하나로 처리, 줄바꿈 안함.
+
+            pre: 연속된 공백을 처리, 줄바꿈은 원래 그대로
+            pre-line : 연속된 공백은 하나로 처리, 줄바꿈 처리
+            pre-wrap : 연속된 공백은 그대로 처리, 줄바꿈 처리
+        */
+        .wh1{
+            width: 200px;
+            white-space: nowrap;
+
+        }
+        .wh2{
+            width: 200px;
+            white-space: pre;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="lheight shadow lowercase">
+        HTML
+    </div>
+
+    <div class="space4">
+        이런 효과는 잘 사용되지 않습니다. <br>
+    </div>
+    <div class="space2">
+        이런 효과는 잘 사용되지 않습니다.
+    </div>
+
+    <div class="wordspace">
+        이런 효과는 잘 사용되지 않습니다.
+    </div>
+
+
+
+    <!-- 넘치는 경우 기본적으로는 넘치는 부분이 아랫단으로 떨어집니다.-->
+    <div class="overbase">
+        이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+
+    <div class="over">
+        이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+    
+    <div class="overflow">
+        이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+    
+    <div class="over_ellipsis">
+        이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+    
+    
+    <div class="indentation">
+        안녕하세요
+    </div>
+    
+    <br><br><br>
+    
+    <div class="wh1">
+        이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+    <div class="wh2">이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘이런 효과는 잘
+    </div>
+</body>
+</html>

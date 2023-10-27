@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="changeBg();" value="색전환">
+
+    
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+
+    <script>
+		ary = ['red', 'blue', 'green'];
+
+		let target = document.querySelectorAll('.target');
+		for(let i = 0; i < target.length; i++){
+			target[i].color = i;
+			console.log(target[i].color);
+			target[i].style.backgroundColor=ary[target[i].color];
+		}
+		function changeBg(){
+			for(let i = 0; i < target.length; i++){
+				target[i].color = (target[i].color + 1) % 3;
+				target[i].style.backgroundColor=ary[target[i].color];
+			}
+		}
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="div1" data-no="1">하나</div>
+    <div class="div1" data-no="2">둘</div>
+    <div class="div1" data-no="3">셋</div>
+    <div class="div1" data-no="4">넷</div>
+    <script>
+        // $('.div1').eq(2).on('click', function(){
+        //     alert('셋을 선택하셨네요?');
+        // });
+
+        // $('.div1').eq(2).on('click',function(){
+        //     console.log($(this).text());
+        // })
+        
+        // $('.div1').on('click',function(){
+        //     let index = $(this).index();
+        //     console.log(index);
+        // })
+
+
+        // //이렇게 화살표 함수에서 this를 쓰면 내가 클릭한 요소가 아니라 window객체를 받아와버린다.
+        // //때문에 이벤트에서는 반드시 function()으로 만들어라!!!
+        // $('.div1').on('click',()=>{
+        //     console.log(this);
+        // });
+
+        //클릭한 요소의 사용자정의요소 가져오기
+            //반드시 $(this).data('no')로 해야한다.
+            // this.data('no')로 하면 안된다!!
+        $('.div1').on('click', function(){
+            console.log($(this).data('no'));
+        })
+
+    </script>
+</body>
+</html>

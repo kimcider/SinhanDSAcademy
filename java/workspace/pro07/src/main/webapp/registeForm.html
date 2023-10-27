@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function fn_sendMember(){
+		let frmMember = document.frmMember;
+		let id = frmMember.id.value;
+		let pwd = frmMember.pwd.value;
+		let name = frmMember.name.value;
+		let email = frmMember.email.value;
+		
+		if(id.length == 0 || id == ""){
+			alert("아이디는 필수입니다.");
+			return;
+		}
+		if(pwd.length == 0 || pwd == ""){
+			alert("비밀번호는 필수입니다.");
+			return;
+		}
+		if(name.length == 0 || name == ""){
+			alert("이름은 필수입니다.");
+			return;
+		}
+		if(email.length == 0 || email == ""){
+			alert("이메일은 필수입니다.");
+			return;
+		}
+		
+		//body의 form태그에서 method와 action을 적어두지 않고, javascript에 적어두면
+		//조건에 따라 메소드와 액션값을 다르게 줄 수 있다. 
+		//아이디, 비밀번호 등의 정보가 들어가 있기 때문에 무조건 post로 작성해야한다!!!!
+		frmMember.method="post";
+		frmMember.action="member4";
+		frmMember.submit();
+	}
+</script>
+</head>
+<body>
+	<form name="frmMember">	
+		<table>
+			<tr>
+				<th colspan="2">회원가입</th>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="email"></td>
+			</tr>
+		</table>
+		<input type='button' value='가입하기' onclick='fn_sendMember();'>
+		<input type='reset' value='초기화'>
+		<input type='hidden' name='command' value='addMember'>
+	</form>
+</body>
+</html>

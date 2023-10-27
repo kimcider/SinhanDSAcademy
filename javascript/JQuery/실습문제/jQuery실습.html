@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>국어<input type="text" class="input"></div>
+    <div>영어<input type="text" class="input"></div>
+    <div>수학<input type="text" class="input"></div>
+    <div>총계<input type="text" id="tot"></div>
+    <div>평균<input type="text" id="avg"></div>
+
+
+    <script>
+        $('.input').keyup(function(){
+            let tot = 0;
+            $('.input').each(function(index, element){
+                tot = tot + Number(element.value);
+            })
+            $('#tot').attr('value', tot);
+            $('#avg').attr('value', tot/3);
+        });
+    </script>
+</body>
+</html>

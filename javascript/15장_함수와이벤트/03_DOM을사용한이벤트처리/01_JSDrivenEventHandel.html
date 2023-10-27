@@ -1,0 +1,21 @@
+<!-- 자바스크립트가 주체가 되어 html요소들에 거는방법!!! -->
+
+<html lang="en">
+<body>
+    <input type="button" value="글자색바꾸기">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint commodi a laudantium rerum praesentium! Voluptates doloribus ex deleniti illo voluptatem hic? Quo ullam tempora molestias nesciunt inventore provident? Non, magni.</p>
+
+    <script>
+        let button = document.querySelector('input[type="button"]');
+
+        button.onclick = changeColor;
+        function changeColor(){
+            document.querySelector('p').style.color='red';
+        }
+        button.onclick = changeBackgroundColor;
+        function changeBackgroundColor(){
+            document.querySelector('p').style.backgroundColor='yellow';
+        }
+    </script>    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <script>
+        //window.onload()말고 다른방법!
+        $(document).ready(function () {
+            //내용작성
+        });
+
+
+        //문서로드후 실행
+        //documnet.ready이것도 안써도된다 ㅇㅇ
+        //이거는 외워야한다!!!!
+        $(function () {
+            //내용작성
+        })
+    </script>
+
+</head>
+
+<body>
+    <h1 class="greet">안녕하세요</h1>
+    <h2 class="greet">반갑습니다.</h2>
+
+
+    <ul>
+        <li>MENU1</li>
+        <li>MENU2</li>
+        <li>MENU3</li>
+        <li>MENU4</li>
+    </ul>
+    <script>
+        // $('h1') 이 자체가 jquery객체가 되는것
+        console.log($('h1'));
+
+
+        $('h1').css('color', 'red');
+
+        //for문을 돌릴 필요 없이 자동으로 돌려준다.
+        $('.greet').css('backgroundColor', 'yellow');
+
+        
+        //each()메소드!!!
+        // 배열 처리
+        let arr = [1, 2, 3, 4, 5];
+        $.each(arr, function (index, element) {
+            console.log(index, element);
+        });
+
+        //하위요소 처리
+        $.each($('ul > li'), function (index, element) {
+            console.log(index, element);
+            console.log(element.innerHTML);
+        });
+
+        $(function () {
+            $('.greet').on('click', function () {
+                alert(111);
+            })
+        });
+    </script>
+</body>
+
+</html>

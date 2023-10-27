@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        //생성자 함수
+        function Calculator(x, y){
+            this.x = x;
+            this.y = y;
+        }
+        
+        // 기존의 문법은 class가 없기때문에 prototype이라는 것을 사용했다.
+        //이런식으로 속성을 줘도 되고
+        // Calculator.prototype.plus = function(){
+        //     return this.x + this.y;
+        // }
+        // Calculator.prototype.minus = function(){
+        //     return this.x - this.y;
+        // }
+
+        // 이런식으로 속성을 한번에 줘도 된다.
+        Calculator.prototype = {
+            plus: function(){ return this.x + this.y;},
+            minus: function(){ return this.x - this.y;}
+        };
+        
+        let cal = new Calculator(10,5);
+        console.log(cal.plus());
+        console.log(cal.minus());
+
+        
+        // 이제 클래스가 존재한다!!!!
+        // 존재하긴 하는데 많이 쓰지는 않는다 ㅎㅎ... 함수로 더 많이한다..ㅎㅎ
+        class Calculator2{
+            constructor(x, y){
+                this.x = x;
+                this.y = y;
+            }
+
+            // 클래스가 존재하기에 이렇게 클래스 안에 메소드를 줄 수 있다
+            plus(){
+                return this.x + this.y;
+            }
+            minus(){
+                return this.x - this.y;
+            }
+        }
+        let cal2 = new Calculator2(20, 10);
+        console.log(cal2.plus());
+        console.log(cal2.minus());
+
+        //상속도 가능
+        //다중상속 불가능. 인터페이스 없음.
+        class Calculator3 extends Calculator2{
+            constructor(x, y, z){
+                super(x, y);
+                this.z = z;
+            }
+
+            plus2(){
+                return this.x + this.y + this.z;
+            }
+        }
+        let cal3 = new Calculator3(20, 10, 10);
+        console.log(cal3.plus2());
+    </script>
+</body>
+</html>

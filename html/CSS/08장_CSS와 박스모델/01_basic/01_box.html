@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .div1{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000000;
+            
+            /* 왼쪽으로 붙이는 옵션 */
+            float: left;
+        }
+        .outer{
+            border: 1px solid #FF0000;
+            
+            /* 400으로 하면 안의 두 div의 길이가 (200+패딩*2+테두리*2+마진*2) * 2로 400을 넘기때문에 떨어진다. */
+            /* width: 400px; */
+            /* 정확히 하려면 본래 계산기를 두드려야 하지만!! */
+        }
+        
+        /* box-sizing옵션을 사용해 내부의 테두리까지 모두 포함한 너비값을 지정할 수 있다. */
+        .cb{
+            /* default값 */
+            box-sizing: content-box;
+            
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 10px solid #abcdef;
+        
+            margin: 10px 10px 10px 0px;
+            /* 테두리 깎기 */
+            border-radius: 20px;
+        }
+        .bb{
+            /* 테두리까지 포함된 값 */
+            box-sizing: border-box;
+            
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 10px solid #fedcba;
+            border-radius: 20px;
+        }
+        /* 둘 모두 width, height를 200으로 설정했지만, 둘의 크기가 확연히 다른 것을 알 수 있다. */
+
+
+        .circle{
+            /* 테두리까지 포함된 값 */
+            box-sizing: border-box;
+            
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 10px solid #FFDDCC;
+            border-radius: 100px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="div1"></div>
+        <div class="div1"></div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="cb">  box-sizing이<br>content-box  </div>
+    <div class="bb">  box-sizing이<br>border-box  </div>
+    <div class="circle">   </div>
+</body>
+</html>

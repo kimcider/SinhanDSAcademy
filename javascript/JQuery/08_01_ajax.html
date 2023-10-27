@@ -1,0 +1,36 @@
+<html lang="en">
+<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script></head>
+
+<body>
+    <!-- 
+        여기서 08_target.html을 호출해서 파일을 읽어오는게 아니라 
+        웹으로 비동기 통신을 해서 데이터를 읽어오려한다.
+    -->
+
+    <input type="button" id="btn" value='ajax로 읽어오기'>
+    <div id="area"></div>
+
+    <script>
+        $('#btn').click(function () {
+            $.ajax({
+                //파일을 입력받는게 아님. 경로를 쓴거임
+                url: '08_01_target.html',
+                // url: 'http://daum.net', //같은 서버 내의 것이 아니라 다른 서버에 접속할때는 보안상의 문제에 의해서 ajax에서 막아둔다
+                dataType: 'HTML',
+                
+                //통신에 성공했을 경우 수행
+                success: function(data){  //data: 응답받은 그 결과를 data변수에 담아서 function을실행한다.
+                    $('#area').html(data);
+                },
+                //통신에 실패했을 경우 수행
+                error: function(){
+                    console.log('통신오류');
+                }
+            });
+        });
+
+        // ajax가, url을 호출한 후, url에서 받아온 데이터를 data에 전달하고,
+        // 그렇게 전달받은data를 인자삼아 success:function(){}을 수행하는것
+    </script>
+</body>
+</html>

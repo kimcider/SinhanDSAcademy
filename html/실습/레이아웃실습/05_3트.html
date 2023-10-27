@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .wrapper {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .header {
+            padding: 40px 0px;
+        }
+
+        .menu {
+            height: 40px;
+        }
+
+        .menu>ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .menu>ul>li {
+            box-sizing: border-box;
+            width: 25%;
+            height: 40px;
+            border: 1px solid black;
+            float: left;
+        }
+
+        .menu>ul>li:hover {
+            background-color: #d3d3d3;
+        }
+
+        @media screen and (max-width:1000px) {
+            .menu>ul>li {
+                width: 50%;
+            }
+        }
+        @media screen and (max-width:700px) {
+            .menu>ul>li {
+                width: 100%;
+            }
+        }
+
+        .container>div {
+            box-sizing: border-box;
+            padding: 100px 0px;
+            float: left;
+        }
+
+        .submenu {
+            width: 30%;
+        }
+
+        .content {
+            width: 70%;
+        }
+
+        @media screen and (max-width:1000px) {
+            .submenu {
+                width: 100%;
+            }
+
+            .content {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            clear: both;
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <img src="/CSS/12장_책예제/images/bg1.jpg" width="100px">
+        </div>
+        <div class="menu">
+            <ul>
+                <li>MENU1</li>
+                <li>MENU2</li>
+                <li>MENU3</li>
+                <li>MENU4</li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="submenu">SUBMENU</div>
+            <div class="content">CONTENT</div>
+        </div>
+        <div class="footer">FOOTER</div>
+    </div>
+</body>
+
+</html>

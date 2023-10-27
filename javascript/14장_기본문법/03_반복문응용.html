@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="item">하나</div>
+    <div class="item">둘</div>
+    <div class="item">셋</div>
+
+    <input type="button" value="색상 변경 버튼" id="btn">
+
+    <script>
+        //버튼이 클릭될 시, 글씨의 색을 바꿀 것이다.
+        var button = document.querySelector('#btn');
+        button.onclick = function () {
+            var items = document.querySelectorAll('.item');
+            // console.log(items);
+
+            for (i = 0; i < items.length; i++) {
+                // console.log(items[i]);
+                items[i].style.color = 'red';
+            }
+        }
+    </script>
+</body>
+
+</html>

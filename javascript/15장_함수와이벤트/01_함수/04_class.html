@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        // 생성자 함수
+        function Student(name, age) {
+            let n = name;
+            let a = age;
+            this.n2 = name;
+            this.a2 = age;
+
+            function eat() {
+                console.log('밥먹기');
+            }
+
+            this.eat2 = function () {
+                console.log('밥먹기');
+            }
+
+            this.createMenu = function () {
+                this.menu = '짜장면';
+            }
+        }
+        let s = new Student('홍길동', 30);
+        console.log(s.n);//접근불가
+        console.log(s.n2);//접근 가능
+        // JavaScript의 클래스 내의 변수는 this.변수명으로 선언해야 사용이 가능하다. 
+
+        // console.log(s.eat()); //접근 불가
+        s.eat2();//접근 가능!
+        //이렇게 this.함수명 에다가 함수를 할당해줘야 사용이 가능하다.
+
+        console.log(s.menu); //createMenu함수를 수행하기 전에는 menu라는 속성이 존재하지 않다가
+        s.createMenu();
+        console.log(s.menu); //createMenu함수를 수행하면 menu라는 속성에 접근이 가능하다.
+
+
+
+
+        
+
+        console.log('------');
+        class Student2 {
+            //생성자
+            constructor(name, age) {
+                this.n = name;
+                this.a = age;
+                console.log('생성자 실행');
+            }
+
+            //method
+            // eat = function(){이렇게 써도 됨
+            eat() {
+                console.log(this.n + ' 학생이 밥을 먹음');
+            }
+        }
+        let s2 = new Student2('김길동', 10);
+        s2.eat();
+        
+    </script>
+</body>
+
+</html>

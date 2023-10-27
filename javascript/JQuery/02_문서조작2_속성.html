@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <img src="/images/coffee-blue.jpg" id="img" data-no="10">
+
+    <script>
+        //width속성이 설정되어있다.
+        $('#img').attr('width', 100);
+
+        //속성 삭제
+        $('#img').removeAttr('width');
+
+        //사용자 속성
+        let customAttr = $('#img').data('no');
+        console.log(customAttr);
+    </script>
+</body>
+</html>

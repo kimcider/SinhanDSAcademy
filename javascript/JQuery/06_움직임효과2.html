@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+
+
+    <!-- jqueryUI를 추가해주면 animate()안에 css도 변경 가능하다. -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+
+    <style>
+        #box {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+
+            position: relative;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+            })
+
+            //interval주기로 함수를 계속 실행
+            let animation = setInterval(() => {
+                $('#box').animate({
+                    width: '+=50',
+                    height: '+=50'
+                }, 1000) //animate의 동작시간설정
+            }, 1000);   //setInterval의 interval설정 이거 설정해야 clearInterval이된다.
+
+            $("#stop").click(function(){
+                //이렇게 하면 한번 스탑을 하지만, interval간격으로 계속 확장하기때문에 stop으로는 안멈춰진다.
+                // $('#box').stop();
+
+                // setInterval 중지
+                // 이때 반드시 중지시킬 setInterval을 담고있는 변수를 인자로 넣어줘야한다.
+                //또한, setInterval을 설정할 때의 interval도 반드시 필요하다.
+                clearInterval(animation);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <input type="button" value="버튼" id="btn">
+    <input type="button" value="중지" id="stop">
+    <div id="box">박스</div>
+</body>
+
+</html>

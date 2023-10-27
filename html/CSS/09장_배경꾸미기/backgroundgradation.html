@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th, td{
+            border: 1px solid #000;
+        }
+
+        /* 
+        이런식으로 2*40px짜리 이미지를 반복시켜서 그라데이션을 넣는 경우가 있다. 
+        */
+        th{
+            background-image: url('/img/bgimg2.png');
+            background-repeat: repeat-;
+        }
+
+        /* div{
+            width: 1000px;
+            height: 500px;
+            border: 1px solid black;
+
+            background-image: url('/img/img.PNG');
+            background-repeat: no-repeat;
+            background-position: center center;
+        } */
+        div{
+            width: 1000px;
+            height: 2000px;
+            border: 1px solid black;
+
+            background-image: url('/img/img.PNG');
+            background-repeat: no-repeat;
+            background-position: right bottom;
+
+            /* 항상 브라우저의 특정 위치에 고정된다 */
+            background-attachment: fixed;
+        }
+    </style>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>제목</th>
+            <th>제목</th>
+            <th>작성일</th>
+        </tr>
+        <tr>
+            <td>1번글</td>
+            <td>안녕하세요</td>
+            <td>2023-10-10</td>
+        </tr>
+    </table>
+
+    <hr>
+    <div>
+        
+    </div>
+</body>
+</html>

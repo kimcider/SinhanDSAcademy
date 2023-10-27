@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+            /* border: 1px solid black; */
+        }
+
+        hr {
+            background: #d5d5d5;
+            height: 1px;
+            border: 0;
+
+        }
+
+        section {
+            margin-top: 60px;
+        }
+
+        .top {
+            margin: 0;
+            z-index: 100;
+            background-color: white;
+            position: fixed;
+            top: 0px;
+            height: 100px;
+            width: 100%;
+        }
+
+        .resume_wrap {
+            width: 1248px;
+            margin: 0 auto;
+            display: flex;
+
+            position: relative;
+            top: 120px;
+        }
+
+        .resume_left {
+            width: 930px;
+        }
+
+        .resume_right {
+            margin-left: 24px;
+            width: 294px;
+        }
+
+        .resume_top {
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            height: 60px;
+        }
+
+        .resume_title {
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+            align-items: center;
+
+            margin: 0 0 0 30px;
+        }
+        .resume_title > div{
+            width: 800px;
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+            align-items: center;
+        }
+        .resume_title > button{
+            border: 0px;
+            background-color: white;
+            font-size: 15px;
+            color: #475067;
+        }
+
+        .resume_left>section>section>div>div {
+            margin: 0 0 0 30px;
+        }
+
+        .must {
+            color: #ff0000;
+            font-size: 15px;
+            margin: 0 0 0 10px;
+        }
+
+        .user_desc {
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            margin: 0px 12px;
+
+            color: #858585;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .user_info {
+            display: grid;
+            margin: 20px 4px;
+            grid-template-columns: 300px 300px;
+            grid-template-rows: 40px 40px;
+        }
+
+        .user_info>li {
+            display: flex;
+            align-items: center;
+        }
+
+        .contents>.school_badge {
+            display: inline-flex;
+            background-color: #eaeaea;
+            font-size: 12px;
+            padding: 0 8px;
+            margin-left: 4px;
+            margin-bottom: 0px;
+            line-height: 24px;
+            height: 24px;
+        }
+
+        .contents>.school_detail {
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+        }
+
+        .contents>.school_detail>h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .contents>.school_detail>span {
+            color: #67738e;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .contents>.major {
+            font-size: 18px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+
+        .contents>.school_detail2>dl {
+            color: #373f57;
+            margin: 0;
+        }
+
+        .contents>.school_detail2>dl>div {
+            display: flex;
+        }
+
+        .contents>.school_detail2>dl>div>dt {
+            width: 80px;
+            margin: 0;
+        }
+
+        .contents>.school_detail2>dl>div>dd {
+            width: 100px;
+            margin: 0;
+        }
+
+        .contents>.school_detail2>dl>div>span {
+            width: 2px;
+            margin-right: 8px;
+        }
+
+        .education>div>ul>li {
+            margin: 28px 0;
+        }
+
+        .basic_description {
+            color: #858585;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .snb_box {
+            padding: 24px 16px 24px;
+            width: 294px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 4px 16px rgba(21, 39, 111, 0.08);
+        }
+        .snb_box{
+            font-weight: bold;
+        }
+        .snb_box>ul{
+            font-size: 15px;
+            color: #67738e;
+            line-height: 22px;
+        }
+        .snb_box>ul>li>a:link{
+            color: #67738e;
+            text-decoration: none;
+        }
+        .snb_box>ul>li>a:visited{
+            color: #67738e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <img src="/img/siteLogo.jpg" width="150" style="margin: 8px 0;">
+    </div>
+
+    <div class="resume_wrap">
+        <div class="resume_left">
+            <section style="margin-top: 0;">
+                <div class="privateInformation">
+                    <div class="resume_top">
+                        <h1>김병천</h1>
+                        <div>
+                            <select name="career_cd" id="careerCD">
+                                <option value="신입">신입</option>
+                                <option value="경력">신입</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="user_desc">남, 1996 (27세)</p>
+                    <ul class="user_info">
+                        <li class="user_email"> <img src="/img/message.png" alt=""><span>rlaqudcjs96@naver.com</span>
+                        </li>
+                        <li class="user_phone"> <img src="/img/phone.PNG" alt="">010-947208567</li>
+                        <li class="user_address"><img src="/img/home.PNG" alt="">서울 마포구</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+
+                <section>
+                    <div class="education" id="education">
+                        <div class="resume_title">
+                            <div>
+                                <div>학력</div>
+                                <span class="must">필수</span>
+                            </div>
+                            <button onclick="alert(기능추가요망)">
+                                <img src="/img/plus.PNG" alt="" width="11px">
+                                <span>추가</span>
+                            </button>
+                        </div>
+                        <hr>
+                        <div>
+
+                            <ul>
+                                <li>
+                                    <div class="contents">
+                                        <span class="school_badge">최종학력</span>
+                                        <div class="school_detail">
+                                            <h3>OO대학교(4년제)</h3>
+                                            <span>(주간)</span>
+                                            <span>|</span>
+                                            <span>2017.03~2023.08(졸업예정)</span>
+                                        </div>
+                                        <div class="major">철학</div>
+                                        <div class="school_detail2">
+                                            <dl>
+                                                <div>
+                                                    <dt>복수전공</dt>
+                                                    <span>|</span>
+                                                    <dd>컴퓨터공학</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>학점</dt>
+                                                    <span>|</span>
+                                                    <dd>3.33</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>지역</dt>
+                                                    <span>|</span>
+                                                    <dd>서울</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+                                    <div class="contents">
+                                        <span class="school_badge">최종학력</span>
+                                        <div class="school_detail">
+                                            <h3>XX대학교(4년제)</h3>
+                                            <span>(야간)</span>
+                                            <span>|</span>
+                                            <span>2017.03~2023.08(졸업)</span>
+                                        </div>
+                                        <div class="major">공학</div>
+                                        <div class="school_detail2">
+                                            <dl>
+                                                <div>
+                                                    <dt>부전공</dt>
+                                                    <span>|</span>
+                                                    <dd>필라테스전공</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>학점</dt>
+                                                    <span>|</span>
+                                                    <dd>3.33</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>지역</dt>
+                                                    <span>|</span>
+                                                    <dd>제주</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+                                    <div class="contents">
+                                        <span class="school_badge">최종학력</span>
+                                        <div class="school_detail">
+                                            <h3>XX대학교(4년제)</h3>
+                                            <span>(야간)</span>
+                                            <span>|</span>
+                                            <span>2017.03~2023.08(졸업)</span>
+                                        </div>
+                                        <div class="major">공학</div>
+                                        <div class="school_detail2">
+                                            <dl>
+                                                <div>
+                                                    <dt>부전공</dt>
+                                                    <span>|</span>
+                                                    <dd>필라테스전공</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>학점</dt>
+                                                    <span>|</span>
+                                                    <dd>3.33</dd>
+                                                </div>
+                                                <div>
+                                                    <dt>지역</dt>
+                                                    <span>|</span>
+                                                    <dd>제주</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="career" id="career">
+                        <div class="resume_title">
+                            <div>경력</div>
+                            <button onclick="alert(기능추가요망)">
+                                <img src="/img/plus.PNG" alt="" width="11px">
+                                <span>추가</span>
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="basic_description">
+                            경력사항 또는 인턴, 현장실습 등 급여를 받은 업무경험이 있다면 자유롭게 작성해보세요!
+                        </div>
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="skill" id="skill">
+                        <div class="resume_title">
+                            <div>스킬</div>
+                            <button onclick="alert(기능추가요망)">
+                                <img src="/img/plus.PNG" alt="" width="11px">
+                                <span>추가</span>
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="basic_description">
+                            스킬을 추가해주세요.
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="mycareer" id="mycareer">
+                        <div class="resume_title">
+                            <div>MY Career</div>
+                            <button onclick="alert(기능추가요망)">
+                                <img src="/img/plus.PNG" alt="" width="11px">
+                                <span>추가</span>
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="basic_description">
+                            간단소개, 직무∙직업, 핵심역량, URL을 입력하고 내 이력서를 브랜딩 해보세요!
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="activity" id="activity">
+
+                    </div>
+                </section>
+
+                <section>
+                    <div class="license" id="license">
+
+                    </div>
+                </section>
+
+                <section>
+                    <div class="attach_files" id="attach_files">
+
+                    </div>
+                </section>
+
+                <section>
+                    <div class="career_profile" id="career_profile">
+
+                    </div>
+                </section>
+
+                <section>
+                    <div class="introduce" id="introduce">
+
+                    </div>
+                </section>
+
+                <!-- 사람인 인적성검사 -->
+                <section>
+                    <div class="svq" id="svq">
+
+                    </div>
+                </section>
+
+                <!-- 취업 우대사항 -->
+                <section>
+                    <div class="personal" id="personal">
+
+                    </div>
+                </section>
+            </section>
+        </div>
+        <div class="resume_right">
+            <div class="snb_box">
+                <p style="font-size: 17px; font-weight: bold">이력서 완성도</p>
+                <hr>
+                <ul>
+                    <li><a href="#education">학력</a></li>
+                    <li><a href="#career">경력</a></li>
+                    <li><a href="#skill">스킬</a></li>
+                    <li><a href="#mycareer">MY Career</a></li>
+                    <li><a href="#activity">경험/활동/교육</a></li>
+                    <li><a href="#license">자격/어학/수상</a></li>
+                    <li><a href="#attach_files">포트폴리오 및 기타문서</a></li>
+                    <li><a href="#career_profile">경력기술서</a></li>
+                    <li><a href="#introduce">자기소개서</a></li>
+                    <li><a href="#svq">사람인 인-적성검사</a></li>
+                    <li><a href="#personal">취업우대사항</a></li>
+
+
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

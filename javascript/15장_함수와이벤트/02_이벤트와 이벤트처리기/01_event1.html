@@ -1,0 +1,17 @@
+<html lang="en">
+<body>
+    <input type="button" onclick="alert('버튼클릭'); alert('JS코드가 얼마든지 들어올 수 있다');" value="버튼1">
+    <!-- 근데 위 코드는 너무 길다. 그래서 -->
+
+    <!-- 아래와 같이 a태그의 코드를 간결하게 할 수 있다. -->
+    <script>
+        function a(){
+            alert('버튼 클릭');
+        }
+    </script>
+    <input type="button" onclick="a()" value="버튼2">
+
+    <!-- 이런식으로도 가능하다 -->
+    <a href="javascript:alert('버튼클릭');"> 버튼3</a>
+</body>
+</html>

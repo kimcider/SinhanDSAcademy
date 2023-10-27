@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+        위치 속성 공식!!
+            자식 태그에 position을 absolute로 적용하려면, 
+            부모 태그의 position은relation이어야하고, 
+            부모의 width, height가 모두 적용이 되어있어야 한다.
+
+        이렇게 해야 컨테이너 밖으로 요소가 나가서 레이아웃 구도가 망가지지 않는다.
+    -->
+
+    <style>
+        /* 부모 */
+        #container{
+            position: relative;
+            border: 1px solid black;
+            height: 200px;
+            width: 200px;
+
+            /* 추가로 쓸 수 있는 overflow들 */
+            /* height: 150px;
+            width: 150px;
+            overflow: hidden; 
+            overflow-y:scroll; */
+        }
+
+        div{
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1{
+            position: absolute;
+            background-color: red;
+            left: 0px;
+            top: 0px;
+        }
+        #box2{
+            position: absolute;
+            background-color: orange;
+            left: 50px;
+            top: 50px;
+        }
+        #box3{
+            position: absolute;
+            background-color: yellow;
+            left: 100px;
+            top: 100px;
+        }
+
+        /* 부모 컨테이너의 정중앙에 자식 컨테이너 배치시키기 */
+        #parent{
+            width: 500px;
+            height:500px;
+            background-color: red;
+            position: relative;
+        }
+
+        #child{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            
+            /* left: (부모의 넓이 / 2) - (자식의 넓이 / 2) */
+            /* top: (부모의 높이 / 2) - (자식의 높이 / 2) */
+            position:absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+     <h1>header</h1>
+     <div id="container">
+         <div id="box1"></div>
+         <div id="box2"></div>
+         <div id="box3"></div>
+     </div>
+     <h1>footer</h1>
+        
+     <hr>
+     <!-- 부모 컨테이너의 정중앙에 자식 컨테이너 배치시키기 -->
+     <div id="parent">
+        <div id="child"></div>
+     </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+h1 {
+    /*h1 tag에 대해 적용*/
+    color: red;
+}
+
+h2{
+    /* h2 tag에 대해 적용 */
+    color: blue;
+}

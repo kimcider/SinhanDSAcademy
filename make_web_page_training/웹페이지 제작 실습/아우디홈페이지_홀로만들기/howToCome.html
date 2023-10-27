@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aef63147fb49c659f9bfd23ffc8e5488&libraries=services"></script>
+    <style>
+        .container>.size {
+            /* border: 1px solid black; */
+            width: 1200px;
+            height: 600px;
+
+        }
+
+        .container>.size>div {
+            width: 50%;
+            height: 600px;
+            float: left;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .container>.size> #greet{
+            line-height: 600px;
+        }
+        .container > .size > div > #map{
+            width: 80%;
+            height: 80%;
+            margin: auto;
+            border: black 1px solid;
+        }
+    </style>
+    <script>
+        $(function () {
+            var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+            var mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+            // 지도를 생성합니다    
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao.maps.services.Geocoder();
+
+            // 주소로 좌표를 검색합니다
+            geocoder.addressSearch('서울 마포구 월드컵북로4길 77', function (result, status) {
+
+                // 정상적으로 검색이 완료됐으면 
+                if (status === kakao.maps.services.Status.OK) {
+
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                    // 결과값으로 받은 위치를 마커로 표시합니다
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                    });
+
+                    // 인포윈도우로 장소에 대한 설명을 표시합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:6px 0;">금융 SW 아카데미</div>'
+                    });
+                    infowindow.open(map, marker);
+
+                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                    map.setCenter(coords);
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="size">
+                <div><a href="index.html"><img src="img/logo.png" alt=""></a></div>
+                <div class="idRelated">
+                    <a href="">로그인</a> |
+                    <a href="">회원가입</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <ul class="depth1">
+                <li>
+                    <a href="">회사소개</a>
+                    <ul class="depth2">
+                        <li><a href="">MENU1_1</a></li>
+                        <li><a href="">MENU1_2</a></li>
+                        <li><a href="howToCome.html">오시는길</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">MENU2</a>
+                    <ul class="depth2">
+                        <li><a href="">MENU2_1</a></li>
+                        <li><a href="">MENU2_2</a></li>
+                        <li><a href="">MENU2_3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">MENU3</a>
+                    <ul class="depth2">
+                        <li><a href="">MENU3_1</a></li>
+                        <li><a href="">MENU3_2</a></li>
+                        <li><a href="">MENU3_3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">MENU4</a>
+                    <ul class="depth2">
+                        <li><a href="">MENU4_1</a></li>
+                        <li><a href="">MENU4_2</a></li>
+                        <li><a href="">MENU4_3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">MENU5</a>
+                    <ul class="depth2">
+                        <li><a href="">MENU5_1</a></li>
+                        <li><a href="">MENU5_2</a></li>
+                        <li><a href="">MENU5_3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="container">
+            <div class="size">
+                <div id="greet">
+                    <h1>오시는길</h1>
+                </div>
+                <div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <div class="size">
+                <div class="info">
+                    <p>신한DS 금융 SW 아카데미</p>
+                    <p>서울시 마포구 월드컵북로 4길 77</p>
+                    <p>02-123-4567 | 02-380-4444</p>
+                    <p>대표자: 서민구 | 개인정보책임자: 아무개</p>
+                    <p>사업자등록번호 111-02-1244</p>
+                </div>
+
+                <div class="sns_area">
+                    <a href="" target="_blank"><img src="img/blog_ico.png" alt=""></a>
+                    <a href="" target="_blank"><img src="img/facebook_ico.png" alt=""></a>
+                    <a href="" target="_blank"><img src="img/insta_ico.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

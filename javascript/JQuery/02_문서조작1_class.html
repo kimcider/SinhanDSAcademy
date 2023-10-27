@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .redColor {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>안녕하세요</h1>
+
+    <script>
+        // 얘만 있으면 redColor class를 추가. style효과로 h1을 붉게 변경
+        $('h1').addClass('redColor');
+
+        // 얘가 있으면 redColor class를 제거. style효과가 적용되지 않는다.
+        $('h1').removeClass('redColor');
+
+        /*
+                toggleClass를 사용
+                해당 클래스가 요소 내에 이미 존재할 경우 해당 클래스를 제거
+                해당 클래스가 요소 내에 존재하지 않을 경우 해당 클래스를 추가
+        */
+        document.querySelector('h1').onclick = function () {
+            $('h1').toggleClass('redColor');
+        }
+    </script>
+</body>
+
+</html>

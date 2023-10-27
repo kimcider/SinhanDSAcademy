@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>국어</th>
+            <td><input type="text" class="score" id="kor" value=""></td>
+        </tr>
+        <tr>
+            <th>영어</th>
+            <td><input type="text" class="score" id="eng"></td>
+        </tr>
+        <tr>
+            <th>수학</th>
+            <td><input type="text" class="score" id="mat"></td>
+        </tr>
+        <tr>
+            <th>합계</th>
+            <td><input type="text" id="tot"></td>
+        </tr>
+        <tr>
+            <th>평균</th>
+            <td><input type="text" id="avg"></td>
+        </tr>
+    </table>
+    <script>
+        $(function(){
+            $('.score').keyup(function(){
+                let tot=0;
+                $('.score').each(function(i, e){
+                    tot+=Number(e.value);
+                });
+                // tot+= Number($("kor").val());
+                // tot+= Number($("eng").val());
+                // tot+= Number($("mat").val());
+                $('#tot').val(tot);
+                $('#avg').val(tot/3);
+            })
+        })
+
+    </script>
+</body>
+
+</html>

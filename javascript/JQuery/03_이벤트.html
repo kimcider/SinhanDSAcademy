@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="div1">하나</div>
+    <script>
+        $('#div1').on('click', function(){
+            alert(1);
+        });
+        $('#div1').bind('click', function(){
+            alert(1);
+        });
+        $('#div1').click(function(){
+            alert(1);
+        });
+
+        //이벤트 끄기
+        $('#div1').off('click');
+    </script>
+</body>
+</html>

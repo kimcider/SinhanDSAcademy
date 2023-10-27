@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border = "1">
+        <tr>
+            <!-- 제목행은 th태그를 사용해 
+                가운데 정렬을 할 수 있고
+                진하게 표시가 가능하다.-->
+            <th>HTML</th>
+            <th>Java</th>
+            <th>가운데정렬</th>
+        </tr>
+        <tr>
+            <td>head</td>
+            <td></td>
+            <td>왼쪽정렬</td>
+        </tr>
+        <tr>
+            <td>body</td>
+            <td></td>
+            <td>길이늘이기이이이이이이이</td>
+        </tr>
+    </table>
+
+
+
+    <!-- 90p 실습-->
+    <hr>
+    <br>
+    <h2>상품 구성</h2>
+    <table border="1">
+        <caption>선물용과 가정용 상품 구성</caption>
+        <tr>
+            <th>용도</th>
+            <th>중량</th>
+            <th>개수</th>
+            <th>가격</th>
+        </tr>
+        <tr>
+            <td>선물용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>35,000원</td>
+        </tr>
+        <tr>
+            <td>선물용</td>
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>52,000원</td>
+        </tr>
+        <tr>
+            <td>가정용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>30,000원</td>
+        </tr>
+        <tr>
+            <td>가정용</td>
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>47,000원</td>
+        </tr>
+    </table>
+    
+    
+    <hr>
+    <br>
+
+    <!-- 92p 실습-->
+    <!-- thead -->
+    <!-- thead를 설정하면 어느 행에 선언되어있든 맨 위에 표시된다.-->
+    <!-- tfoot을 설정하면 어느 행에 선언되어있든 맨 아래에 표시된다.-->
+    <h2>thead, tfoot</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>용도</th>
+                <th>중량</th>
+                <th>개수</th>
+                <th>가격</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>선물용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>35,000원</td>
+        </tr>
+        <tr>
+            <td>선물용</td>
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>52,000원</td>
+        </tr>
+        <tr>
+            <td>가정용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>30,000원</td>
+        </tr>
+        <tr>
+            <td>가정용</td>
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>47,000원</td>
+        </tr>
+    </table>
+
+
+    <!--셀 합치기-->
+    <!-- rowspan, colspan-->
+    <hr>
+    <br>
+    <h2>셀 합치기</h2>
+    <table border="1">
+        <caption>선물용과 가정용 상품 구성</caption>
+        <tr>
+            <th>용도</th>
+            <th>중량</th>
+            <th>개수</th>
+            <th>가격</th>
+        </tr>
+        <tr>
+            <td rowspan="2">선물용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>35,000원</td>
+        </tr>
+        <tr>
+            <!--<td>선물용</td>-->
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>52,000원</td>
+        </tr>
+        <tr>
+            <td rowspan="2">가정용</td>
+            <td>3kg</td>
+            <td>11~16과</td>
+            <td>30,000원</td>
+        </tr>
+        <tr>
+            <!--<td>가정용</td>-->
+            <td>5kg</td>
+            <td>18~26과</td>
+            <td>47,000원</td>
+        </tr>
+    </table>
+
+
+
+    <!-- 시간표 실습예제 -->
+    <hr><br>
+    <h2>시간표 실습 예제</h2>
+    <table border="1">
+        <tr>
+            <td></td>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;화&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;금&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+        <tr>
+            <td>1교시</td>
+            <td>Java</td>
+            <td colspan="2">HTML</td>
+            <td></td>
+            <td rowspan="4">Spring</td>
+        </tr>
+        <tr>
+            <td>2교시</td>
+            <td rowspan="2">SQL</td>
+            <td rowspan="3">CSS</td>
+            <td colspan="2">JSP</td>
+        </tr>
+        <tr>
+            <td>3교시</td>
+            <td rowspan="2">Servlet</td>
+            <td rowspan="2">Servlet</td>
+        </tr>
+        <tr>
+            <td>4교시</td>
+            <td>Java</td>
+        </tr>
+    </table>
+
+</body>
+</html>

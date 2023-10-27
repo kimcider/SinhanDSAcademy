@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <!-- 
+        외부 파일 불러오기 
+        func2()에서 func1()을 사용하고 있기 때문에 func2()를 사용하려면  test1.js와 test2.js가 모두 필요하다.
+    -->
+    <script src="06_test1.js"></script>
+    <script src="06_test2.js"></script>
+    <script>
+        // 기존에는 파일을 별도로 만들어서 불러오는 형식으로 사용했다.
+        // 의존성 관리
+        // 순서도 중요. 파일 전체를 불러온다. 
+        func2();
+
+        
+
+
+    </script>
+</body>
+</html>

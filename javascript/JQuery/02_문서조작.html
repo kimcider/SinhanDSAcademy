@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        .redColor {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>안녕하세요</h1>
+    <script>
+        $('h1').addClass('redColor');
+
+        //클래스 제거
+        // $('h1').removeClass('redColor');
+
+        //토글클래스
+        // 없으면 켜지고, 있으면 꺼지는것
+        document.querySelector('h1').onclick = function () {
+            $('h1').toggleClass('redColor');
+        }
+    </script>
+
+
+    <img src="/images/coffee-blue.jpg" id="img" data-no="10">
+    <script>
+        //속성 확인/추가
+        $('#img').attr('src'); //src속성의 값을 리턴한다
+        console.log($('#img').attr('src'));
+
+        // 속성의 값을 설정
+        $('#img').attr('src', '/images/tree-1.jpg'); //src속성의 값을 /images/tree-1.jpg로 바꾼다.
+
+        //여러개를 바꾸고 싶을 경우
+        $('#img').attr({
+            src: '/images/coffee-blue.jpg',
+            width: 500,
+            height: 250
+        });
+
+        //속성 삭제
+        $('#img').removeAttr('width');
+        //이걸로 removeAttr('class')를 해버리면 해당 요소 안의 클래스 자체가 삭제된다.
+        //removeClass로 요소 안의 클래스 중 일부만 삭제하는 것과는 완전히 다르다!
+
+        //사용자 속성
+        //기본적으로 제공하는 속성 말고 내가 추가적으로 만들어주는 속성(data-??으로 만든 속성)들에 대한 조작
+        console.log($('#img').data('no'));
+    </script>
+
+    <script>
+        //스타일 확인
+        $('h1').css('color')
+        console.log($('h1').css('color'));
+
+        //스타일의 속성의 값을 설정
+        $('h1').css('color', 'blue');
+
+        //여러개를 바꾸고 싶을 경우
+        $('h1').css({
+            color: 'black',
+            fontWeight: 100
+            // 'font-weight':100 이렇게도 가능
+        });
+
+        //스타일 삭제?
+        $('h1').css('color', ''); // h1의 클래스에 빨간색이 입혀졌음으로 빨간색으로 남는다. 
+
+
+        //객체 내용 확인
+        console.log($('h1').html());
+        console.log($('h1').text());
+        
+        //객체 내용 설정
+        // console.log($('h1').html("히히"));
+        
+        //객체 제거
+        // $('h1').remove();
+        // $('h1').empty();
+
+
+
+
+        
+        //객체 삽입
+        console.log($('<div>반갑습니다</div>'));
+        //기존의 h1태그의 '가장 마지막부분'에 div를 추가
+        // $('<div>반갑습니다</div>').appendTo('h1');
+        //기존의 h1태그의 '가장 앞부분'에 div를 추가
+        // $('<div>반갑습니다</div>').prependTo('h1');
+
+        //기존의 h1태그가 끝나고 바로 그 다음
+        // $('<div>반갑습니다</div>').insertAfter('h1');
+        //기존의 h1태그의 앞에 삽입
+        // $('<div>반갑습니다</div>').insertBefore('h1');
+        
+        //h1태그에다가 div-를 append한다.
+        // $('h1').append('<div>반갑습니다</div>');
+        // $('h1').prepend('<div>반갑습니다</div>');
+
+        //h1태그의 이전/이후에 추가
+        // $('h1').after('<div>반갑습니다</div>');
+        // $('h1').before('<div>반갑습니다</div>');
+
+        //객체를 이동시키는것처럼 보이게하는것
+        // $('h1').insertAfter('#img');
+        
+        //객체 복제
+        // $('h1').clone();
+        // $('h1').clone().insertAfter('#img');
+        //잠깐 이거 복제로 어제 그 테이블도 그냥 복제 가능한가?
+
+
+    </script>
+</body>
+
+</html>

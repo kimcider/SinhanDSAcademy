@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            /* 구글 웹폰트 적용 */
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* th, td : 1px 검은색 테두리, 높이 40px, 양쪽 여백 5px */
+        th, td{
+            border: 1px solid black;
+            height: 40px;
+            padding: 0 5px;
+        }
+        
+        /* 가입, 취소 버튼 가운데 정렬 */
+        .buttonTD{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* 버튼 배경색 : #1a73a1, 테두리 없음, 높이 25px, 글자색 흰색 */
+        .button{
+            background-color: #1a73a1;
+            border: 0px;
+            height: 25px;
+            color: white;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>회원가입</h1>
+    
+
+    <!-- 폼의 전송위치 : insert.do -->
+    <!-- 폼 전송방법 : post -->
+    <form method="post" action="insert.do">
+        <!-- table : 셀 여백 제거 -->
+        <table cellspacing="0">
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" size="20">
+                    <input type="button" class="button" value="중복확인">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><input type="password" size="20"></td>
+            </tr>
+            <tr>
+                <th>비밀번호 확인</th>
+                <td><input type="password" size="20"></td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td><input type="text" size="20"></td>
+            </tr>
+            <tr>
+                <th>연락처</th>
+                <td>
+                    <select>
+                        <option value="010">010</option>
+                        <option value="011">그</option>
+                        <option value="100">다</option>
+                        <option value="101">음</option>
+                        <option value="110">은</option>
+                        <option value="111">없</option>
+                        <option value="1000">습</option>
+                        <option value="1001">니</option>
+                        <option value="1010">다</option>
+                    </select>
+                    <input type="text" maxlength="4" size="5" name>
+                    <label for="secondPhoneNumber">-</label>
+                    <input type="text" maxlength="4" size="5" id="secondPhoneNumber">
+                </td>
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td>
+                    <input type="radio" name="gender" checked>남자
+                    <input type="radio" name="gender">여자
+                </td>
+            </tr>
+            <tr>
+                <th>약관동의</th>
+                <td><input type="checkbox">약관에 동의합니다.</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="buttonTD">
+                    <div>
+                        <input type="submit" class="button" value="가입">
+                        <input type="reset" class="button" value="취소">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

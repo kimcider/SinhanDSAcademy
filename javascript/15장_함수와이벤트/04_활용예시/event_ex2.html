@@ -1,0 +1,129 @@
+<!-- 아이디/비밀번호/비밀번호 확인을 입력하지 않으면 입력하세요!라고 메세지를 띄워보는 실습! -->
+<!-- 가입버튼에 이벤트를 건다! 거기서부터 읽어라! -->
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>회원가입</title>
+    <style>
+        th,
+        td {
+            border: 1px solid #000;
+            height: 40px;
+            padding: 0 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        input[type='submit'],
+        input[type='button'] {
+            background-color: #1A73E1;
+            border: 0px;
+            height: 25px;
+            color: #fff;
+        }
+    </style>
+
+    <script>
+        function regist(){
+            let id = document.querySelector('#id');
+            if(id.value.trim() === ""){
+                alert("아이디를 입력해주세요.");
+                id.focus();// 디테일을 살리자면, 이런식으로 아이디를 입력하는 곳으로 포커스를 맞춰 줄 수 있다.
+                return;
+            }
+            
+            let pw = document.querySelector('#pw');
+            if(pw.value.trim() === ""){
+                alert("비밀번호란을 입력해주세요.");
+                pw.focus();
+                return;
+            }
+            
+            let pw2 = document.querySelector('#pw2');
+            if(pw2.value.trim() === ""){
+                alert("비밀번호 확인란을 입력해주세요.");
+                pw2.focus();
+                return;
+            }
+
+            if(pw.value.trim() !== pw2.value.trim()){
+                alert("비밀번호와 비밀번호 확인이 다릅니다.");
+                return;
+            }
+
+            //이렇게 진짜 가입할껀지 확인할 수 있다.
+            if(confirm('가입하시겠습니까?')){
+                // 제출함수는 form태그에있다. 
+                let form = document.querySelector('#memberForm');
+                form.submit();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>회원가입</h1>
+    <form action="test.html" method="get" id="memberForm">
+        <table>
+            <tr>
+                <th><label for="id">아이디</label></th>
+                <td>
+                    <input type="text" name="id" id="id" size="20" value="" />
+                    <input type="button" value="중복확인" />
+                </td>
+            </tr>
+            <tr>
+                <th><label for="pw">비밀번호</label></th>
+                <td><input type="password" name="pw" id="pw" size="20" value="" /></td>
+            </tr>
+            <tr>
+                <th><label for="pw">비밀번호 확인</label></th>
+                <td><input type="password" name="pw2" id="pw2" size="20" value="" /></td>
+            </tr>
+            <tr>
+                <th><label for="id">이름</label></th>
+                <td><input type="text" name="name" id="name" size="20" value="" /></td>
+            </tr>
+            <tr>
+                <th><label for="id">연락처</label></th>
+                <td>
+                    <select name="tel1">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="016">016</option>
+                        <option value="019">019</option>
+                    </select>
+                    <input type="text" name="tel2" id="tel2" size="4" value="" /> -
+                    <input type="text" name="tel3" id="tel3" size="4" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th><label for="gender">성별</label></th>
+                <td>
+                    <input type="radio" name="gender" value="1" checked /> 남자
+                    <input type="radio" name="gender" value="2" /> 여자
+                </td>
+            </tr>
+            <tr>
+                <th><label for="gender">약관동의</label></th>
+                <td>
+                    <input type="checkbox" name="agree" value="1" /> 약관에 동의합니다.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" value="가입" onclick="regist();">
+                    <input type="button" value="취소">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1{
+            /* 기본값 */
+            /* position: static;    */
+
+            /* 그냥position:relative만하면 바뀌지 않는다.*/
+            position: relative;
+            background-color: red;
+        }
+        #box2{
+            position: relative;
+            background-color: orange;
+
+            /* position:relative로 설정한 후, top, left를 바꿔주면 위치가 변한다. */
+            top:-10px;
+            left:10px;
+        }
+        #box3{
+            position: relative;
+            background-color: yellow;
+            top:-20px;
+            left:20px;
+        }
+
+        #container{
+            border: 1px solid black;
+            width: 500px;
+            height: 500px;
+
+            /* position을 relative로두고 left,top을 설정해두면 위치가 바뀐다.
+                이렇게 해두면 container 안의 box들은, 부모의 위치에 따라서 그 위치가 바뀌게된다. */
+            position: relative;
+            left:100px;
+            top:100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+    </div>
+</body>
+</html>

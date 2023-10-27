@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        #box{
+            /* fixed */
+            /* 컨테이너의 위치와 관계 없이 브라우저를 기준으로 위치가 설정된다 */
+            /* 얘는 스크롤을 내려도 브라우저의 특정 위치에 고정되어있다. */
+            position: fixed;
+            background-color: blue;
+            top: 0px;
+            left:0px;
+        }
+
+        #container{
+            border: 1px solid black;
+            width: 500px;
+            height: 5000px;
+
+            position: relative;
+            left:100px;
+            top:100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="box"></div>
+    </div>
+</body>
+</html>

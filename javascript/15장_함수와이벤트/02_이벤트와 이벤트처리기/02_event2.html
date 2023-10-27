@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="changeBg('red');" value="빨강">
+    <input type="button" onclick="changeBg('blue');" value="파랑">
+    <input type="button" onclick="changeBg('green');" value="초록">
+
+    
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+    <div class="target" style="width: 100px; height: 100px; background-color: black; margin: 20px;"></div>
+
+    <script>
+        function changeBg(color){
+            let target = document.querySelectorAll('.target');
+            for(let i = 0; i < target.length; i++){
+                target[i].style.backgroundColor=color;
+            }
+        }
+    </script>
+</body>
+</html>

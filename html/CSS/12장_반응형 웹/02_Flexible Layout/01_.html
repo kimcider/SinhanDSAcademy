@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .container{
+            border: 3px solid black;
+            box-sizing: content-box;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+        .container > div{
+            border: 1px solid black;
+            box-sizing: border-box;
+            width: 25%;
+            height: 80px;
+            margin: 5px
+        }
+        #opt2{
+            align-self: flex-start;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="opt1">1</div>
+        <div id="opt2">2</div>
+        <div id="opt3">3</div>
+        <!-- <div id="opt1">4</div> -->
+    </div>
+</body>
+</html>

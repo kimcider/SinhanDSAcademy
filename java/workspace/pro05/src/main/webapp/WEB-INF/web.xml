@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>pro05</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  
+  
+  <!-- 서블릿 등록 -->
+  <servlet>
+ 	<servlet-name>aaa</servlet-name>
+ 	
+ 	<!-- 여기는 패키지까지 풀 경로를 다써야한다. -->
+ 	<!-- 오타가 나면 컨트롤누르고 마우스를 가져다대면 링크가 안생긴다. -->
+ 	<servlet-class>sec01.ex01.FirstServlet</servlet-class>
+  </servlet>
+  
+  <!-- 서블릿 매핑 -->
+  <servlet-mapping>
+  	<servlet-name>aaa</servlet-name>
+  	<url-pattern>/first</url-pattern>
+  </servlet-mapping>
+  <!-- 본래는 localhost:8000/pro05 -->
+  <!-- 이렇게 맵핑을 하면, /first만 써도 servlet-name으로 맵핑이되서 자동으로 /FirstServlet으로 연결된다-->
+  <!-- localhost:8000/pro05/first -->
+  
+</web-app>

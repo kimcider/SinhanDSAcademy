@@ -1,0 +1,29 @@
+<html lang="en">
+<body>
+    <input type="button" id="btn2" value="글자색 바꾸기2">
+    <p id="text2"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit eius a ipsa amet. Non, suscipit
+        laboriosam laudantium assumenda molestias in ratione dolore necessitatibus ipsa possimus? Officia laborum et
+        esse ad.</p>
+    <script>
+        let target = document.querySelector('#btn2');
+
+        // 이벤트리스너를 추가!
+        //click이라는 이벤트를 감지하는 리스너를 추가
+        target.addEventListener('click', () => {
+            let innerTarget = document.querySelector('#text2');
+            innerTarget.style.color = 'red';
+        });
+
+        //click이라는 이벤트를 감지하는 리스너를 또 하나 추가
+        target.addEventListener('click', () => {
+            let innerTarget = document.querySelector('#text2');
+            innerTarget.style.backgroundColor = 'yellow';
+        });
+
+        //이렇게 두개의 이벤트리스너를 추가하면 
+        // 위의 코드처럼 뒤에 작성된 것이 앞의 것을 덮어버리는 것이 아니라 
+        // 이벤트리스너가 계속 더해져서 두개의 이벤트를 모두 실행할 수 있다.
+
+    </script>
+</body>
+</html>

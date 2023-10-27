@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>회원 정보 수정</h1>
+
+
+
+    <form method="get" action="insert.jsp"> <!--나중에 insert.jsp파일이 있을 경우, insert.jsp로 전송이된다.-->
+        <!-- 
+    파일을 전송하려면 method를 무조건 post로해야한다.
+    또, 반드시 enctype을 multipart/form-data로해야한다. 
+     
+    <form method="post" action="insert.jsp" enctype="multipart/form-data">
+    -->
+
+        <input type="hidden" name="member" value="10"> <!-- 
+            회원이 10명이 있는데, 3번째 회원을 수정한다고 가정해보자
+            3번회원으로 가서 무언가를 해야 수정을 하기위해서는 value가 필요. 
+            이때 value값을 전송을 해줘야하는데, 이때 이것을 숨겨서 보내기위해 hidden타입을 사용
+        -->
+
+
+        <table border="1" cellspacing="0">
+            <tr>
+                <th>아이디</th>
+                <td><input type="text" name="id" value="kim" maxlength="5" readonly disabled></td>
+                <!--
+                    이렇게 value값을 설정해주면 inputbox의 기본값이 kim으로 설정된다.
+
+                    maxlength로 입력 가능 최대길이를 지정 가능
+
+                    readonly를 쓰면 수정 불가
+
+                    disabled를 쓰면 비활성화된다.
+
+                    readonly랑 disabled랑 둘다 수정이 불가능하다는 공통점이 있다.
+                    readonly는 전송이 가능하고,
+                    disabled는 전송이 안된다. 이런 차이점이 있다.
+                -->
+            </tr>
+            <tr>
+                <th>비번</th>
+                <td><input type="password" name="pwd" placeholder="비밀번호를입력하세요" autofocus required></td>
+                <!-- 
+                    palceholer로 흐릿하게 무언가를 표기할 수 있다. 
+
+                    autofocus를 쓰면, 새로고침을 하면 커서가 자동으로 여기로 들어온다.
+
+                    required를 쓰면, 해당 필드를 채우지 않고는 서버로 전송할 수 없다.
+                 -->
+            </tr>
+
+            <tr>
+                <th>취미</th>
+                <td>
+                    <input type="checkbox" name="hobby" value="1">영화
+                    <input type="checkbox" name="hobby" value="2">독서
+                    <input type="checkbox" name="hobby" value="3">낚시
+                    <!-- checked를 기입하면 체크된 것이 기본값이 된다.-->
+                    <input type="checkbox" name="hobby" value="4" checked>게임
+
+                    <!--
+                        문서 이미지를 클릭해서 들어가면 다음과 같은 링크가 나온다.
+                        http://127.0.0.1:5500/5%EC%9E%A5%20form/insert.jsp?id=&pwd=&hobby=4&gender=on&x=23&y=27
+                        
+                        이때 뒷부분을 보면
+                        ?id=&pwd=&hobby=4&gender=on&x=23&y=27
+
+                        name = value 이렇게 나온다.
+                        이 경우 hobby의 값이 4로나오고
+
+                        gender의 경우 value가 설정되어있지 않기 때문에 기본값인 on으로 표기된다.
+
+                        체크를 여러개 할 경우, 
+                        hobby=1&hobby=4 이런식으로 여러개의 값이 온다.
+                        나중에 자바에서는 이를 배열로 처리한다.
+                    -->
+
+                </td>
+            </tr>
+
+            <tr>
+                <th>성별</th>
+                <td>
+                    <!-- name이 같아야 하나의 radio박스로 구분된다.
+                        name이 다르면 다른거를 눌러도 꺼지지 않는다.-->
+                    <input type="radio" name="gender"> 남자
+                    <input type="radio" name="gender"> 여자
+                    <input type="radio" name="gender" checked> 미제출
+                    <input type="radio" name="diff"> 이건안지워짐
+                </td>
+            </tr>
+
+            <tr>
+                <th>프로필 사진</th>
+                <td>
+                    <input type="file" name="profile">
+                </td>
+            </tr>
+
+            <tr>
+                <th>자기소개</th>
+                <td>
+                    <textarea name="introduce" rows="10" cols="60">textarea의 기본값을 작성해 둘 수 있습니다.</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+
+                    <!-- submit태그의 내용물을 누르면 제출 가능-->
+                    <input type="submit" value="회원정보 수정">
+
+                    <!-- 누르면 초기화!!
+                        input, text에 value로 기본값이 설정되어 있을 경우, 초기화를 누르면
+                        기본값으로 돌아간다.-->
+                    <input type="reset" value="초기화">
+
+
+                    <!-- 이렇게 하면 이미지가 마치 버튼처럼 작동한다-->
+                    <input type="image" src="../img/img.PNG">
+
+                    <!-- 지금은 눌러도 별거없지만, 나중에 이걸 누르면 무언가가 작동하게 JavaScript에서 만들어야한다. -->
+                    <input type="button" value="input태그버튼">
+
+                    <!-- 얘는 전송이 되네용 -->
+                    <button>버튼태그버튼</button>
+                </td>
+            </tr>
+
+
+            <tr>
+                <!-- 
+                    사용자가 뭐라고 입력하든 서버로 전송할 때는 다 문자열로 인식된다.
+                 -->
+                <th>나이</th>
+                <td><input type="number" name="age"></td>
+                <!-- 
+                    그런데 이런식으로 숫자만 입력되도록 제약을 줄 수는 있다.
+                    할 수는 있는데 다 자바스크립트로 할 수 있어서 잘 안쓴다 ㅎㅎ
+                 -->
+            </tr>
+
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <!-- 
+                        이렇게 날짜도 가능하긴한데 잘 안쓴다.
+                        이 달력을 쓰는거보다 다른 달력이 더편하다.
+                    -->
+                    <input type="date">
+                </td>
+            </tr>
+
+            <tr>
+                <th>레이블 예제</th>
+                <td>
+                    
+                    <label for="b1"><input type="checkbox" name="hobby" id="b1" value="1"> 영화</label>
+                    <label for="b2"><input type="checkbox" name="hobby" id="b2" value="2"> 독서</label>
+                    <label for="b3"><input type="checkbox" name="hobby" id="b3" value="3"> 낚시</label>
+                    <label for="b4"><input type="checkbox" name="hobby" id="b4" value="4" checked> 게임</label>
+                    <!-- 
+                    이렇게 label의 for에 id를 붙히면, 해당 글자를 누르면 id가 동일한 체크박스가 클릭된다.
+                 -->
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>거주지</th>
+                <td>
+                    <select name="city">
+                        <option value="0" selected></option> <!--selected로 이 option을 기본값으로 설정할 수 있다.-->
+                        <option value="1">서울</option>
+                        <option value="2">인천</option>
+                        <option value="3">경기</option>
+                    </select>
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+</body>
+
+</html>

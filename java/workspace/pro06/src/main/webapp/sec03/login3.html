@@ -1,0 +1,31 @@
+<!-- sec03.ex03 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<script>
+		function fn_validate(){
+			let frmLogin = document.frmLogin;	//name이있으면 이런식으로도 가져올 수 있다.
+			let user_id = frmLogin.user_id.value;
+			let user_pw = frmLogin.user_pw.value;
+			
+			if((user_id.length == 0 || user_id == "") || (user_pw.length == 0 || user_pw == "")){
+				alert("아이디와 비밀번호를 입력하세요");
+			}else{
+				//form태그의 method와 action이 없어도 여기서 이렇게 채워줄 수 있구나
+				frmLogin.method = "post";
+				frmLogin.action = "/pro06/login5";
+				frmLogin.submit();
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="frmLogin" method="" action="">
+		아이디: <input type="text" name="user_id"><br>
+		비밀번호: <input type="password" name="user_pw"><br>
+		<input type="button" value="로그인" onclick="fn_validate()"> <input type="reset" value="다시입력">
+		<input type="hidden" name="user_address" value="서울시 성북구">
+	</form>
+</body>
+</html>

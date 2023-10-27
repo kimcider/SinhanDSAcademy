@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="button" id="btn" value='ajax로 읽어오기'>
+    <table id="area">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+    </table>
+
+    <!-- 
+        얘는 Json으로부터 받아옴!!!
+     -->
+
+    <script>
+        $('#btn').click(function () {
+            $.ajax({
+                url: '08_02_board.json', //경로
+                method: 'get', //전송방식
+                data: {}, //파라미터
+                cache: false,   //캐쉬에 저장해둘거냐
+                //DB랑 연동할때는 캐쉬를 꺼둬야함. 
+                //그래야 db에 데이터가 갱신되도 캐쉬에 남아있는 데이터를 가져오지 않음
+                type: 'JSON',//응답받은 데이터타입
+                success: function (data) {//통신 성공시 수행할 함수
+                    //data가 어떤 형식으로 올지를 알아야한다.
+                    //board.json파일의 데이터가 객체 안에 요소와 배열이 있는 형태이기 때문에 
+                    //우리는 data가 위와 같은 형식으로 올 것이라고 가정하고 코드를 작성해야 한다.
+                    $.each(data.items, function (i, e) { //총 3번 실행되겠지? 데이터의 배열의 크기가 3이니까?
+                        $('#area').append("<tr><td>" + e.no + "</td><td>" + e.title + "</td><td>" + e.name + "</td><td>" + e.date + "</td></tr>");
+
+                    });
+                },
+                error: function () { //에러발생시 수행할 함수
+                    console.log("ㅜㅜ");
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

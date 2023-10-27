@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            border: 1px solid black;
+    
+            width: 1000px;
+            text-align: center;
+        }
+        .header{
+            padding: 40px 0;
+        }
+        .menucontainer > ul{
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+        .menucontainer > ul > .menu{
+            box-sizing: border-box;
+            height: 40px;
+            line-height: 40px;
+            width: 25%;
+            float: left;
+        }
+        @media screen and (max-width:780px){
+            .menucontainer > ul > .menu{
+                width: 50%;
+            }
+        }
+        @media screen and (max-width:600px){
+            .menucontainer > ul > .menu{
+                width: 100%;
+            }
+        }
+
+        .container > div{
+            box-sizing: border-box;
+            padding: 100px 0;
+            float: left;
+        }
+        .submenu{
+            width: 30%;
+        }
+        .content{
+            width: 70%;
+        }
+        
+        @media screen and (max-width:780px){
+            .submenu{
+                width: 100%;
+            }
+            .content{
+                width: 100%;
+            }
+            .footer{
+                clear: both;
+            }
+        }
+
+        .footer{
+            padding: 30px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">header</div>
+
+        <div class="menucontainer">
+            <ul>
+                <div class="menu"><li>menu1</li></div>
+                <div class="menu"><li>menu2</li></div>
+                <div class="menu"><li>menu3</li></div>
+                <div class="menu"><li>menu4</li></div>
+                
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="submenu">submenu</div>
+            <div class="content">content</div>
+        </div>
+
+        <div class="footer">footer</div>
+    </div>
+</body>
+</html>

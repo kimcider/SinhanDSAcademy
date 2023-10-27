@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //계단형함수
+        function plus(x){
+            return function(y){
+                return x + y;
+            };
+        }
+        console.log(plus(3)(2));
+        
+        //결과는 위와 동일        
+        let plus2 = x => y => x + y;
+        console.log(plus2(3)(2));
+        
+    </script>
+</body>
+</html>

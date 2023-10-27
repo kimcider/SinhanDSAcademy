@@ -1,0 +1,41 @@
+<!-- 매우 중요한 개념!!! -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        //기존방식
+        let arr = [1, 2];
+        let a0 = arr[0];
+        let a1 = arr[1];
+        console.log(a0, a1);
+
+
+        //해당 객체와 구조가 같다면 이런식으로도 할당 가능
+        //이거 리엑트에서 많이쓰임...
+        let [b0, b1] = arr;
+        console.log(b0, b1);
+        //뭐야이게....;;;
+
+
+        let [c0] = arr; //[]안의 숫자가 arr의 갯수보다 작다면 arr의 앞에서부터 n 개만 할당해준다.
+        console.log(c0);
+        
+        
+
+        //객체
+        let obj = {a:1, b:2};
+        var a = obj['a'];
+        var b = obj['b'];
+        console.log(a);
+        console.log(b);
+        
+        //객체 구조 분해시 키의 이름으로 분해(같은 키이름으로 저장)
+        var {a, b} = obj;
+        console.log(a);
+        console.log(b);
+
+    </script>
+</body>
+</html>

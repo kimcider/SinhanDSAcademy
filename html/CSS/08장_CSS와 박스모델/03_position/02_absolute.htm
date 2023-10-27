@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1{
+
+            position: absolute;
+            background-color: red;
+        }
+        #box2{
+            position: absolute;
+            background-color: orange;
+
+            /* 주변에 어떤 요소들이 놓여있던지를 신경쓰지 않고, 오직 부모의 포지션을 기준으로 자신의 위치를 조정한다. */
+            top:-10px;
+            left:10px;
+        }
+        #box3{
+            position: absolute;
+            background-color: yellow;
+            top:-20px;
+            left:20px;
+        }
+
+        #container{
+            border: 1px solid black;
+            width: 500px;
+            height: 500px;
+
+            position: relative;
+            left:100px;
+            top:100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+    </div>
+</body>
+</html>

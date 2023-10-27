@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* parent의 자식 div태그만*/
+        #parent > div{
+            color: red;
+        }
+        
+        /* 자손 */
+        #parent div{
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="parent"> 
+        <div>자식 div</div>
+        <span>
+            <div>span div</div>
+            <div>span div</div>
+        </span>
+    </div>
+</body>
+</html>
