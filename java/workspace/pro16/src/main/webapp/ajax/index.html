@@ -1,0 +1,54 @@
+<html>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+</head>
+<body>
+	<input type="text" id="t_id" />
+	<input type="button" id="btn_duplicate" value="ID 중복체크하기" onClick="fn_process()" />
+	<br>
+	<br>
+	<div id="message"></div>
+
+	<script type="text/javascript">
+		function fn_process() {
+			var _id = $("#t_id").val();
+			if (_id == '') {
+				alert("ID를 입력하세요");
+				return;
+			}
+			
+			/*
+				Ajax 시작!
+				페이지를 이동하지 않고 /pro16/mem으로 요청을 전송&응답을 수신.
+				응답받은 데이터를 바탕으로 작업을 수행
+			*/
+			$.ajax({
+				type : "post",
+				async : true,
+				url : "/pro16/mem", // 이 주소로
+				dataType : "text",
+				data : {			
+					id : _id		//이 데이터를 전송
+				},
+				success : function(data, textStatus) {
+					// 성공적으로 응답받은 데이터를 바탕으로 작업을 수행.
+					if (data == 'not_usable') {
+						$('#message').text("사용할 수 없는 ID입니다.");
+					} else {
+						$('#message').text("사용할 수 있는 ID입니다.");
+						$('#btn_duplicate').prop("disabled", true);
+					}
+				},
+				error : function(xhr, status, error) {
+
+				},
+				complete : function(data, textStatus) {
+
+				}
+			})
+		}
+	</script>
+</body>
+</html>
