@@ -10,9 +10,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 
-/**
- * Servlet Filter implementation class CharacterEncodingFilter
- */
 //@WebFilter("/CharacterEncodingFilter")
 public class CharacterEncodingFilter implements Filter {
     String encoding;

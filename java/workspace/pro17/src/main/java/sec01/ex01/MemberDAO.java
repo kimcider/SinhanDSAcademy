@@ -50,7 +50,9 @@ public class MemberDAO {
 		}
 		
 		return memberList;
-	}public List listMembers(MemberVO memberVO) {
+	}
+	
+	public List listMembers(MemberVO memberVO) {
 		List memberList = new ArrayList();
 		String _name = memberVO.getName();
 		try {
@@ -82,6 +84,29 @@ public class MemberDAO {
 		return memberList;
 	}
 	
+	public MemberVO findMember(String id) {
+		MemberVO memInfo = null;
+		try {
+			String query = "select * from t_member ";
+			query+= "where id=?";
+			System.out.println("preparedStatement: " + query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				memInfo = new MemberVO(rs.getString("id"), 
+										rs.getString("pwd"), 
+										rs.getString("name"), 
+										rs.getString("email"),
+										rs.getDate("joinDate"));
+			}
+			pstmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return memInfo;
+	}
+	
 	public void addMember(MemberVO m) {
 		try {
 			String id = m.getId();
@@ -95,6 +120,43 @@ public class MemberDAO {
 			pstmt.setString(2, pwd);
 			pstmt.setString(3, name);
 			pstmt.setString(4, email);
+			
+			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void modMember(MemberVO m) {
+		try {
+			String id = m.getId();
+			String pwd = m.getPwd();
+			String name = m.getName();
+			String email = m.getEmail();
+			String query = "UPDATE t_member SET pwd=?, name=?, email=? WHERE id=?";
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			pstmt.setString(4, id);
+			
+			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delMember(String id) {
+		try {
+			String query = "DELETE FROM t_member WHERE id=?";
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
 			
 			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
 			pstmt.executeUpdate();

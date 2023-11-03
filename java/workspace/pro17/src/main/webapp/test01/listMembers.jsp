@@ -26,6 +26,8 @@
 			<td width="7%"><b> 이름 <b></td>
 			<td width="7%"><b> 이메일 <b></td>
 			<td width="7%"><b> 가입일 <b></td>
+			<td width="7%"><b> 수정 <b></td>
+			<td width="7%"><b> 삭제 <b></td>
 		</tr>
 		
 		<!--  -->
@@ -36,6 +38,8 @@
 				<td>${mem.name }</td>
 				<td>${mem.email }</td>
 				<td>${mem.joinDate }</td>
+				<td><a href="modMemberForm.do?id=${mem.id }">수정</a></td>
+				<td><a href="delMember.do?id=${mem.id }">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>
