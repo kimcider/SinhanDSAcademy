@@ -1,4 +1,4 @@
-package sec01.ex01;
+package member;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,7 +37,7 @@ public class MemberController extends HttpServlet {
 
 		/*
 		 * http://localhost:8000/pro17/member/asdf 이런식으로 접속하면 member/뒤의 asdf가 action으로
-		 * 들어온다. 이렇게 들어온 경로가 뭐냐에 따라서 다르게 동작하도록 할것
+		 * 들어온다. 이렇게 들어온 경로에 따라서 다르게 동작하도록 작성
 		 */
 		String action = request.getPathInfo();
 		System.out.println("action: " + action);
