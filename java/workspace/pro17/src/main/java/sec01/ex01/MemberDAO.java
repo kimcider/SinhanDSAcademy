@@ -81,4 +81,26 @@ public class MemberDAO {
 		
 		return memberList;
 	}
+	
+	public void addMember(MemberVO m) {
+		try {
+			String id = m.getId();
+			String pwd = m.getPwd();
+			String name = m.getName();
+			String email = m.getEmail();
+			String query = "INSERT INTO t_member(id, pwd, name, email)" + "VALUES(?, ?, ?, ?)";
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			pstmt.setString(3, name);
+			pstmt.setString(4, email);
+			
+			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

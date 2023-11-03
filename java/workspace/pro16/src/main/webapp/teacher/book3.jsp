@@ -11,11 +11,10 @@ $(function() {
 			method:"post",
 			url:'/pro16/teacher2',
 			data: {searchWord : searchWord},
-			///여기를 HTML로 바꾸면 이런식으로도 가능하다
-			//teacher2로 들어가서 bookList.jsp를 받아온 후, 그 HTML 자체를 div요소에 넣어버리는것. 
-			//웹사이트면 이런식으로 쓰는게 편하다. 
+			//bookList.jsp를 응답으로서 받기에 dataType은 HTML
 			dataType:'HTML',
 			success: function(res){
+				// teacher2.java에서 응답받은 bookList.jsp코드 자체를 #bookArea의 html값으로 넣어버리는것!
 				$("#bookArea").html(res);
 			}
 			

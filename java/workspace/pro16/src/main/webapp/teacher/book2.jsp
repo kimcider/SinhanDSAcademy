@@ -11,8 +11,8 @@ $(function() {
 			method:"get",
 			url:'/pro16/teacher2',
 			data: {searchWord : searchWord},
-			dataType:'JSON',
 			success: function(res){
+				
 			}
 			
 		})

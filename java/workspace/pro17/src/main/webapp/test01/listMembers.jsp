@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.cls1{
-		font-size:40px;
-		text-align:center;
-	}
-	.cls2{
-		font-size:20px;
-		text-align:center
-	}
-	
-	
+.cls1 {
+	font-size: 40px;
+	text-align: center;
+}
+
+.cls2 {
+	font-size: 20px;
+	text-align: center
+}
 </style>
 </head>
 <body>
@@ -28,25 +27,20 @@
 			<td width="7%"><b> 이메일 <b></td>
 			<td width="7%"><b> 가입일 <b></td>
 		</tr>
-		<c:choose>
-			<c:when test="${empty membersList }">
-				<tr>
-					<td colspan="5">
-					<b>등록된 회원이 없습니다.</b>
-				</tr>
-			</c:when>
-			<c:when test="${not empty membersList }">
-				<c:forEach var="mem" items="${membersList }">
-					<tr align="center">
-						<td>${mem.id }</td>
-						<td>${mem.pwd }</td>
-						<td>${mem.name }</td>
-						<td>${mem.email }</td>
-						<td>${mem.joinDate }</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-		</c:choose>
+		
+		<!--  -->
+		<c:forEach var="mem" items="${membersList }">
+			<tr align="center">
+				<td>${mem.id }</td>
+				<td>${mem.pwd }</td>
+				<td>${mem.name }</td>
+				<td>${mem.email }</td>
+				<td>${mem.joinDate }</td>
+			</tr>
+		</c:forEach>
 	</table>
+	<a href="memberForm.do">
+		<p class='cls2'>회원 가입하기</p>
+	</a>
 </body>
 </html>

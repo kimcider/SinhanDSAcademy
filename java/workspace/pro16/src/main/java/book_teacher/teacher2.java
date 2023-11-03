@@ -52,17 +52,21 @@ public class teacher2 extends HttpServlet {
 		String title = request.getParameter("searchWord");
 		String res = useAPI(title);
 		
-		//맵을 쓴 이유가 있다. 
-		//총 갯수라던가, 총 페이지라는것들도 있다. 이런거를 추가할 때, map으로 해두면 보다 편하다 ㅎㅎ. 
+		// 메타데이터들을 저장하기 위해 map객체를 사용! 
 		Map<String, Object> map = new HashMap<>();
 		
 		try {
 			JSONParser JsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject)JsonParser.parse(res);
+			
+			// 응답받은 JSON객체에서 JSON배열을 추출
+			// 네이버 api에서 결과값들을 items배열에 넣어준다.
 			JSONArray items = (JSONArray)jsonObject.get("items");
 			
+			// 배열 안의 JSON객체를 정제해서 보관할 list 생성
 			List<Map<String, String>> list = new ArrayList<>();
 			
+			// 배열 안의 JSON객체를 정제, list에 보관
 			for(int i = 0; i < items.size(); i++) {
 				JSONObject item = (JSONObject)items.get(i);
 				HashMap<String, String> object = new HashMap<>();
@@ -74,16 +78,16 @@ public class teacher2 extends HttpServlet {
 				
 				list.add(object);
 			}
+			
+			// list를 map에 저장
 			map.put("list", list);
-			//이런식으로 간편하게 추가할 수 있다. 
+			// map을 사용했기에, 전체 응답의 갯수 등을 편하게 저장할 수 있다.
 			map.put("total", jsonObject.get("total")); 
-			
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		// request 객체에 map을 저장 후, 포워드로 데이터를 넘겨준다.
 		request.setAttribute("map", map);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/teacher/bookList.jsp");
 		rd.forward(request, response);
 	}

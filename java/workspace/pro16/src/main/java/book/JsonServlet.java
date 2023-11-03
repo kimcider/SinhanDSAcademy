@@ -23,9 +23,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-/**
- * Servlet implementation class JsonServlet
- */
 @WebServlet("/target")
 public class JsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -77,17 +74,13 @@ public class JsonServlet extends HttpServlet {
 			throw new RuntimeException("검색어 인코딩 실패", e);
 		}
 
-		// https://openapi.naver.com/v1/search/book.json
 		String apiURL = "https://openapi.naver.com/v1/search/book.json?query=" + text; // JSON 결과
-		// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
-		// // XML 결과
 
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 		String responseBody = get(apiURL, requestHeaders);
 
-//		System.out.println(responseBody);
 		return responseBody;
 	}
 
