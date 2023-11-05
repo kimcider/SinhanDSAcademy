@@ -41,7 +41,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="" class='cls1'>
+	<a href="articleForm.do" class='cls1'>
 		<p class='cls2'>글쓰기</p>
 	</a>
 </body>

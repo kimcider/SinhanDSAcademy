@@ -46,29 +46,34 @@ public class BoardController extends HttpServlet {
 		String nextPage = null;
 		String action = request.getPathInfo();
 		System.out.println("action: " + action);
-
+		
 		if (action == null || "/listArticles.do".equals(action)) {
 			List<ArticleVO> articlesList = boardService.listArticles();
 			request.setAttribute("articlesList", articlesList);
 			nextPage = "/WEB-INF/view/board/listArticles.jsp";
+		} 
+		
+		// 글 추가를 담당하는 영역
+		else if ("/articleForm.do".equals(action)) {
+			nextPage = "/WEB-INF/view/board/articleForm.jsp";
 		} else if ("/addArticle.do".equals(action)) {
-			//첨부파일은 upload메소드가 올리고, 첨부파일의 이름을 받아오는것
+			/* 게시글을 포맷팅해 MAP에 저장해 반환하고, 첨부파일을 저장 */
 			Map<String, String> articleMap = upload(request, response);
 			ArticleVO vo = new ArticleVO();
 			
 			//아직은 모른다. 이따가 articleForm.jsp를 만들 때 title이라고 줄것임
 			//와우..
 			vo.setTitle(articleMap.get("title"));
-			vo.setTitle(articleMap.get("content"));
+			vo.setContent(articleMap.get("content"));
 			vo.setImagefilename(articleMap.get("imagefilename"));
 			vo.setId("hong");
 			
 			boardService.addArticle(vo);
-			nextPage = "redirect:listArticle.do";
-		} else if ("/articleForm.do".equals(action)) {
-			nextPage = "/WEB-INF/view/board/articleForm.jsp";
-
-		} else if ("/modMember.do".equals(action)) {
+			nextPage = "redirect:listArticles.do";
+		} 
+		
+		//추후 구현할 영영
+		else if ("/modMember.do".equals(action)) {
 
 		} else if ("/modMemberForm.do".equals(action)) {
 
@@ -87,13 +92,16 @@ public class BoardController extends HttpServlet {
 
 	}
 
-	// 파일 업로드 라이브러리를 이용해서 파라미터, 파일 처리 후에 Map객체에 담아 리턴.
+	/* 게시글을 포맷팅해 MAP에 저장해 반환하고, 첨부파일을 저장 */
+	/* 얘는 어쨌든 DB와 상호작용하는애는 아니니까 여기다 둔건가? 그냥 서비스에 둬도 되지 않나? */
 	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException {
 		Map<String, String> articleMap = new HashMap<String, String>();
 
 		String encoding = "utf-8";
 		String realPath = request.getRealPath("upload/article_image");
+		System.out.println("realPath: " + realPath);
+		
 		File currentDirPath = new File(realPath);
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setRepository(currentDirPath);
@@ -104,7 +112,7 @@ public class BoardController extends HttpServlet {
 			for (int i = 0; i < items.size(); i++) {
 				FileItem fileItem = (FileItem) items.get(i);
 				if (fileItem.isFormField()) {
-					
+					System.out.println("여기가 실행이 되나?");
 					//추가한 부분 이 역할이 뭔지 생각해보기
 					//파라미터일 경우
 					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
@@ -123,7 +131,7 @@ public class BoardController extends HttpServlet {
 						//추가한 부분 이 역할이 뭔지 생각해보기
 						articleMap.put(fileItem.getFieldName(), fileName);
 						
-						File uploadFile = new File(currentDirPath + "\\" + fileName);
+						File uploadFile = new File(currentDirPath + "/" + fileName);
 						fileItem.write(uploadFile);
 					}
 				}
