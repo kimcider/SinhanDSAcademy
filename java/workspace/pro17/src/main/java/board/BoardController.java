@@ -28,6 +28,9 @@ public class BoardController extends HttpServlet {
 		boardService = new BoardService();
 	}
 
+	public void destroy() {
+		boardService.boardDAO.close();
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doHandle(request, response);

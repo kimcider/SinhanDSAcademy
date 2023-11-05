@@ -1,29 +1,45 @@
 package board;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 
 public class BoardDAO {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private Connection con;
-
+	private DataSource dataFactory;
 	public BoardDAO() {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "testuser", "test1234");
+			Context ctx = new InitialContext();
+			Context envContext = (Context) ctx.lookup("java:/comp/env"); // 여기까지는 경로를 바꾸면 안된다.
+			
+			// 이렇게 전역변수로 선언된 dataFactory변수에 datasource를 넣어둔다.
+			dataFactory = (DataSource) envContext.lookup("jdbc/oracle"); // context.xml의 리소스에 넣었던 그 네임을 넣어야한다.
+			con = dataFactory.getConnection();
 			stmt = con.createStatement();
-		} catch (Exception e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void close() {
+		try {
+			con.close();
+			stmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 검색어/페이지번호 등등을 입력 받아서 해당 게시판 목록을 리턴
 	public List<ArticleVO> selectAllArticles() {
 		List<ArticleVO> list = new ArrayList<>();

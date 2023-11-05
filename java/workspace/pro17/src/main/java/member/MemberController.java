@@ -21,6 +21,11 @@ public class MemberController extends HttpServlet {
 		memberDAO = new MemberDAO();
 	}
 
+	@Override
+	public void destroy() {
+		memberDAO.close();
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doHandle(request, response);
@@ -36,8 +41,8 @@ public class MemberController extends HttpServlet {
 		String nextPage = null;
 
 		/*
-		 * http://localhost:8000/pro17/member/asdf 이런식으로 접속하면 member/뒤의 asdf가 action으로
-		 * 들어온다. 이렇게 들어온 경로에 따라서 다르게 동작하도록 작성
+		 * http://localhost:8000/pro17/member/asdf 이런식으로 접속하면 member/뒤의 asdf가 action으로 들어온다. 
+		 * 이렇게 들어온 경로에 따라서 다르게 동작하도록 작성한다. 
 		 */
 		String action = request.getPathInfo();
 		System.out.println("action: " + action);
@@ -45,7 +50,7 @@ public class MemberController extends HttpServlet {
 		if (action == null || "/listMembers.do".equals(action)) {
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
-			nextPage = "/test01/listMembers.jsp";
+			nextPage = "/WEB-INF/view/member/listMembers.jsp";
 		} else if ("/addMember.do".equals(action)) {
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -60,7 +65,7 @@ public class MemberController extends HttpServlet {
 			// 이런 개념 매우 중요!!!!!!!!
 			nextPage = "redirect:listMembers.do";
 		} else if ("/memberForm.do".equals(action)) {
-			nextPage = "/test01/memberForm.jsp";
+			nextPage = "/WEB-INF/view/member/memberForm.jsp";
 		} else if ("/modMember.do".equals(action)) {
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");
@@ -73,7 +78,7 @@ public class MemberController extends HttpServlet {
 			String id = request.getParameter("id");
 			MemberVO memInfo = memberDAO.findMember(id);
 			request.setAttribute("memInfo", memInfo);
-			nextPage = "/test01/modMemberForm.jsp";
+			nextPage = "/WEB-INF/view/member/modMemberForm.jsp";
 		} else if ("/delMember.do".equals(action)) {
 			String id = request.getParameter("id");
 			memberDAO.delMember(id);
@@ -81,7 +86,7 @@ public class MemberController extends HttpServlet {
 		}else {
 			List<MemberVO> membersList = memberDAO.listMembers();
 			request.setAttribute("membersList", membersList);
-			nextPage = "/test01/listMembers.jsp";
+			nextPage = "/WEB-INF/view/member/listMembers.jsp";
 		}
 
 		if (nextPage.startsWith("redirect:")) {
