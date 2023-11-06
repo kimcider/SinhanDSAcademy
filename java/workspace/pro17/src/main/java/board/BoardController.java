@@ -47,7 +47,7 @@ public class BoardController extends HttpServlet {
 		String action = request.getPathInfo();
 		System.out.println("action: " + action);
 		
-		if (action == null || "/listArticles.do".equals(action)) {
+		if ("/".equals(action) || "/listArticles.do".equals(action)) {
 			List<ArticleVO> articlesList = boardService.listArticles();
 			request.setAttribute("articlesList", articlesList);
 			nextPage = "/WEB-INF/view/board/listArticles.jsp";
@@ -72,15 +72,57 @@ public class BoardController extends HttpServlet {
 			nextPage = "redirect:listArticles.do";
 		} 
 		
-		//추후 구현할 영영
-		else if ("/modMember.do".equals(action)) {
+		// 게시글 조회
+		else if ("/viewArticle.do".equals(action)) {
+			//parameter로 넘어오는 것들은 무조건 다 문자열이기 때문에 String으로 받는다. 
+			String articleno = request.getParameter("articleno");
+			ArticleVO vo = new ArticleVO();
+			vo = boardService.viewArticle(Integer.valueOf(articleno));
+			request.setAttribute("article", vo);
+			nextPage = "/WEB-INF/view/board/viewArticle.jsp";
+			System.out.println(vo);
+		} 
+		
+		// 글 수정
+		else if("/modArticleForm.do".equals(action)) {
+			String articleno = request.getParameter("articleno");
+			ArticleVO vo = new ArticleVO();
+			vo = boardService.viewArticle(Integer.valueOf(articleno));
+			request.setAttribute("article", vo);
+			nextPage = "/WEB-INF/view/board/modArticleForm.jsp";
+		}
+		else if ("/modArticle.do".equals(action)) {
+			Map<String, String> articleMap = upload(request, response);
+			ArticleVO vo = new ArticleVO();
+			
+			//글 수정시 pk 필요
+			//참고로 ~를 할때는 getParameter로 얻어올 수 없다.
+			vo.setArticleno(Integer.valueOf(articleMap.get("articleno")));
+			vo.setTitle(articleMap.get("title"));
+			vo.setContent(articleMap.get("content"));
+			vo.setImagefilename(articleMap.get("imagefilename"));
+			vo.setId("hong");
+			System.out.println(vo);
+			
+			boardService.modArticle(vo);
+			nextPage = "redirect:listArticles.do";
+		} 
+		
+		else if ("/removeArticle.do".equals(action)) {
+			String articleno = request.getParameter("articleno");
+			boardService.removeArticle(articleno);
+			
+			nextPage = "redirect:board/listArticles.do";
+		}
+		
+		//추후 구현할 영역
+		else if ("/.do".equals(action)) {
 
-		} else if ("/modMemberForm.do".equals(action)) {
-
-		} else if ("/delMember.do".equals(action)) {
-
+		}else {
+			nextPage = "redirect:board/listArticles.do";
 		}
 
+		
 		if (nextPage.startsWith("redirect:")) {
 			// redirect가 앞에 붙어있으면 redirect를 수행
 			response.sendRedirect(nextPage.replace("redirect:", ""));

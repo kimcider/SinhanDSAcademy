@@ -23,4 +23,11 @@ public class ArticleVO {
 	private int gno;	//그룹 번호
 	private int ono;	//그룹 오더
 	private int nested;	//들여쓰기 정도
+	
+	//이렇게 하면 컨텐츠에 있는 개행문자를 br태그로 바꿔줄 수 있다. 
+	public String getContentToHtml() {
+		if(content != null) {
+			return content.replace("\n", "<br>");
+		}else return null;
+	}
 }
