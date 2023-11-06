@@ -110,9 +110,24 @@ public class BoardController extends HttpServlet {
 		
 		else if ("/removeArticle.do".equals(action)) {
 			String articleno = request.getParameter("articleno");
-			boardService.removeArticle(articleno);
+			int result = boardService.removeArticles(articleno, request.getRealPath("/upload/article_image"));
 			
-			nextPage = "redirect:board/listArticles.do";
+			// 성공적으로 수행했는지 확인하는 메세지 출력하기
+			//얘는 이제 필요 없다.
+//			nextPage = "redirect:listArticles.do";
+			
+			String msg = "";
+			String url = "";
+			if(result > 0) { //정상적으로 삭제가 됨
+				msg = "정상적으로 삭제되었습니다.";
+				url = "/pro17/board/listArticles.do";
+			}else { 
+				msg = "삭제 오류 발생";
+				url = "viewArticle.do?articleno=" + articleno;
+			}
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+			nextPage = "/WEB-INF/view/common/alert.jsp";
 		}
 		
 		//추후 구현할 영역

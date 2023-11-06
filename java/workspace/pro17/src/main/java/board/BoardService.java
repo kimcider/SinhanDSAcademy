@@ -1,5 +1,6 @@
 package board;
 
+import java.io.File;
 import java.util.List;
 
 public class BoardService {
@@ -24,10 +25,18 @@ public class BoardService {
 		boardDAO.updateArticle(vo);
 	}
 	
-	public void removeArticle(String no) {
+	public int removeArticles(String no, String realPath) {
 		List<String> list = boardDAO.selectImagefilename(no);
-		System.out.println(list);
 		
-		
+		// 첨부 파일 삭제
+		for(String image : list) {
+			if(image != null && !"".equals(image)) {
+				File f = new File(realPath + "/" + image);
+				f.delete();
+			}
+		}
+
+		// 글 삭제
+		return boardDAO.deleteArticles(no);
 	}
 }

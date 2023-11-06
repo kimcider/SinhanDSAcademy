@@ -23,8 +23,6 @@ public class MemberDAO {
 			
 			// 이렇게 전역변수로 선언된 dataFactory변수에 datasource를 넣어둔다.
 			dataFactory = (DataSource) envContext.lookup("jdbc/oracle"); // context.xml의 리소스에 넣었던 그 네임을 넣어야한다.
-			con = dataFactory.getConnection();
-			stmt = con.createStatement();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -42,6 +40,7 @@ public class MemberDAO {
 	public List listMembers() {
 		List memberList = new ArrayList();
 		try {
+			con = dataFactory.getConnection();
 			String query = "select * from t_member order by id";
 			pstmt = con.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
@@ -68,6 +67,7 @@ public class MemberDAO {
 		List memberList = new ArrayList();
 		String _name = memberVO.getName();
 		try {
+			con = dataFactory.getConnection();
 			String query = "select * from t_member ";
 			if((_name != null && _name.length() != 0)) {
 				query += " where name = ?";
@@ -99,6 +99,7 @@ public class MemberDAO {
 	public MemberVO findMember(String id) {
 		MemberVO memInfo = null;
 		try {
+			con = dataFactory.getConnection();
 			String query = "select * from t_member ";
 			query+= "where id=?";
 			System.out.println("preparedStatement: " + query);
@@ -121,6 +122,7 @@ public class MemberDAO {
 	
 	public void addMember(MemberVO m) {
 		try {
+			con = dataFactory.getConnection();
 			String id = m.getId();
 			String pwd = m.getPwd();
 			String name = m.getName();
@@ -143,6 +145,7 @@ public class MemberDAO {
 	
 	public void modMember(MemberVO m) {
 		try {
+			con = dataFactory.getConnection();
 			String id = m.getId();
 			String pwd = m.getPwd();
 			String name = m.getName();
@@ -165,6 +168,7 @@ public class MemberDAO {
 	
 	public void delMember(String id) {
 		try {
+			con = dataFactory.getConnection();
 			String query = "DELETE FROM t_member WHERE id=?";
 			System.out.println(query);
 			pstmt = con.prepareStatement(query);

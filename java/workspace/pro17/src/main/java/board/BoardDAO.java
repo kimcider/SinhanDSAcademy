@@ -24,8 +24,6 @@ public class BoardDAO {
 
 			// 이렇게 전역변수로 선언된 dataFactory변수에 datasource를 넣어둔다.
 			dataFactory = (DataSource) envContext.lookup("jdbc/oracle"); // context.xml의 리소스에 넣었던 그 네임을 넣어야한다.
-			con = dataFactory.getConnection();
-			stmt = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,6 +42,7 @@ public class BoardDAO {
 	public List<ArticleVO> selectAllArticles() {
 		List<ArticleVO> list = new ArrayList<>();
 		try {
+			con = dataFactory.getConnection();
 			String query = "SELECT articleno, title, content, id, writedate, nested" + " FROM t_board"
 					+ " ORDER BY gno DESC, ono ASC";
 			// 이거 왜 gno desc, ono asc인지 확실히 이해해야한다!!!
@@ -72,6 +71,7 @@ public class BoardDAO {
 		ArticleVO vo = new ArticleVO();
 
 		try {
+			con = dataFactory.getConnection();
 			String query = "SELECT articleno, title, content, id, writedate, imagefilename" + " FROM t_board"
 					+ " WHERE articleno=?";
 			pstmt = con.prepareStatement(query);
@@ -98,6 +98,7 @@ public class BoardDAO {
 
 	public void insertNewArticle(ArticleVO article) {
 		try {
+			con = dataFactory.getConnection();
 			String query = "INSERT INTO t_board(articleno, title, content, imagefilename, id, gno, ono, nested)"
 					+ "VALUES(SEQ_T_BOARD.NEXTVAL, ?, ?, ?, ?, SEQ_T_BOARD.CURRVAL, 0, 0)";
 			// 일단 gno, ono, nested를 0으로 넣고, 업데이트를 칠 것
@@ -120,6 +121,7 @@ public class BoardDAO {
 
 	public void updateArticle(ArticleVO vo) {
 		try {
+			con = dataFactory.getConnection();
 			//이렇게 해두고 null을 replace해주면안되나?
 //			String query = "UPDATE t_board SET title=?, content=?, imagefilename=null ";
 			String query = "UPDATE t_board SET title=?, content=? ";
@@ -156,6 +158,7 @@ public class BoardDAO {
 		List<String> list = new ArrayList<>();
 		
 		try {
+			con = dataFactory.getConnection();
 			String query = "SELECT imagefilename FROM t_board WHERE gno=" + articleno;
 			// 이거 왜 gno desc, ono asc인지 확실히 이해해야한다!!!
 
@@ -173,9 +176,10 @@ public class BoardDAO {
 		return list;
 	}
 	// delete
-	public int deleteArticle(String articleno) {
+	public int deleteArticles(String articleno) {
 		int result = 0;
 		try {
+			con = dataFactory.getConnection();
 			//이렇게 해두고 null을 replace해주면안되나?
 //			String query = "UPDATE t_board SET title=?, content=?, imagefilename=null ";
 			String query = "DELETE FROM t_board WHERE gno=" + articleno;

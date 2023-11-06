@@ -36,6 +36,8 @@ public class SecondServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("call doGet method");
+		request.getParameter(getServletName());
+		request.getAttribute(getServletName());
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

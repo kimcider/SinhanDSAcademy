@@ -15,6 +15,12 @@
 	function modify(){
 		location.href="modArticleForm.do?articleno=${article.articleno}";
 	}
+	
+	function del(){
+		if(confirm('정말 삭제하시겠습니까?')){
+			location.href="removeArticle.do?articleno=${article.articleno}";
+		}
+	}
 </script>
 </head>
 <body>
@@ -52,7 +58,7 @@
 		<tr>
 			<td colspan='2' align="center">
 				<input type="button" value="수정하기" onclick="modify();">
-				<input type="button" value="삭제하기">
+				<input type="button" value="삭제하기" onclick="del();">
 				<input type="button" value="목록보기" onclick="location.href='listArticles.do';">
 				<input type="button" value="답글쓰기">
 			</td>
