@@ -56,6 +56,7 @@ public class MemberDAO {
 			}
 			rs.close();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -89,6 +90,7 @@ public class MemberDAO {
 			}
 			rs.close();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -113,7 +115,9 @@ public class MemberDAO {
 										rs.getString("email"),
 										rs.getDate("joinDate"));
 			}
+			rs.close();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -138,6 +142,7 @@ public class MemberDAO {
 			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
 			pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -161,6 +166,7 @@ public class MemberDAO {
 			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
 			pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -177,6 +183,7 @@ public class MemberDAO {
 			//등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
 			pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -61,6 +61,7 @@ public class BoardDAO {
 			}
 			rs.close();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -72,7 +73,7 @@ public class BoardDAO {
 
 		try {
 			con = dataFactory.getConnection();
-			String query = "SELECT articleno, title, content, id, writedate, imagefilename" + " FROM t_board"
+			String query = "SELECT articleno, title, content, id, writedate, imagefilename, gno, ono, nested" + " FROM t_board"
 					+ " WHERE articleno=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, no);
@@ -85,10 +86,14 @@ public class BoardDAO {
 				vo.setId(rs.getString("id"));
 				vo.setWritedate(rs.getDate("writedate"));
 				vo.setImagefilename(rs.getString("imagefilename"));
+				vo.setGno(rs.getInt("gno"));
+				vo.setOno(rs.getInt("ono"));
+				vo.setNested(rs.getInt("nested"));
 			}
 
 			rs.close();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -114,6 +119,7 @@ public class BoardDAO {
 			// 등록/삭제/수정은 등록이 된 갯수를 리턴한다. 때문에 여기서 받아온 값을 int로 리턴받아서 사용하는 경우도 있다.
 			pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -148,6 +154,7 @@ public class BoardDAO {
 			
 			pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -169,6 +176,7 @@ public class BoardDAO {
 			}
 			rs.close();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -186,9 +194,57 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(query);
 			result = pstmt.executeUpdate();
 			pstmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	//답글 등록
+	public void insertReplyArticle(ArticleVO article) {
+		try {
+			con = dataFactory.getConnection();
+			String query = "INSERT INTO t_board(articleno, title, content, imagefilename, id, gno, ono, nested)"
+						//이제는 gno, ono, nested도 모두 article에 담겨오기 때문에 이들도 모두 ?로 적는다.
+					+ "VALUES(SEQ_T_BOARD.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+			System.out.println("query: " + query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, article.getTitle());
+			pstmt.setString(2, article.getContent());
+			pstmt.setString(3, article.getImagefilename());
+			pstmt.setString(4, article.getId());
+			pstmt.setInt(5, article.getGno());
+			pstmt.setInt(6, article.getOno());
+			pstmt.setInt(7, article.getNested());
+
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateOno(ArticleVO vo) {
+		try {
+			con = dataFactory.getConnection();
+			//articleVO vo는 부모vo가오겠지?
+			//부모의 gno와 ono가 필요하다.
+			String query = "UPDATE t_board SET ono=ono+1 WHERE gno=? AND ono>?";
+			
+			int pstmtInt = 1;
+			pstmt = con.prepareStatement(query);
+			System.out.println("update_vo.getGNO: " + vo.getGno());
+			System.out.println("update_vo.getONO: " + vo.getOno());
+			pstmt.setInt(pstmtInt++, vo.getGno());
+			pstmt.setInt(pstmtInt++, vo.getOno());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

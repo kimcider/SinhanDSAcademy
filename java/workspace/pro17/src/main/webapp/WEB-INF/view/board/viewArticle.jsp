@@ -60,7 +60,7 @@
 				<input type="button" value="수정하기" onclick="modify();">
 				<input type="button" value="삭제하기" onclick="del();">
 				<input type="button" value="목록보기" onclick="location.href='listArticles.do';">
-				<input type="button" value="답글쓰기">
+				<input type="button" value="답글쓰기" onclick="location.href='replyForm.do?articleno=${article.articleno}';">
 			</td>
 		</tr>
 	</table>

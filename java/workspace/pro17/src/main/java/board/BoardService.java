@@ -39,4 +39,13 @@ public class BoardService {
 		// 글 삭제
 		return boardDAO.deleteArticles(no);
 	}
+	
+	public void replyArticle(ArticleVO vo) {
+//		여기서의 vo에서 gno, ono, nested는 부모의 gno, ono, nested 정보가 담겨있을것
+		//이제 ONO를 업데이트해주면됨!ㅎㅎ
+		boardDAO.updateOno(vo);
+		vo.setOno(vo.getOno() + 1);
+		vo.setNested(vo.getNested() + 1);
+		boardDAO.insertReplyArticle(vo);
+	}
 }
