@@ -49,8 +49,24 @@ public class BoardController extends HttpServlet {
 		System.out.println("action: " + action);
 
 		if ("/".equals(action) || "/listArticles.do".equals(action)) {
-			List<ArticleVO> articlesList = boardService.listArticles();
-			request.setAttribute("articlesList", articlesList);
+			ArticleVO param = new ArticleVO();
+			String page = request.getParameter("page");
+			if(page != null && !"".equals(page)) {
+				param.setPage(Integer.valueOf(page));
+			}
+			//검색어는 왜 if문을 설정하지 않고 무조건 하는가?
+			//어차피 문자열이여서 Integer.val이런식으로 하는 과정에서 널포인트 에러가 날 일이 없다.
+			System.out.println("searchWord: " + request.getParameter("searchWord"));
+			param.setSearchWord(request.getParameter("searchWord"));
+			System.out.println("param.searchWord: " + param.getSearchWord());
+			//이런식으로
+			
+			// 페이징을 추가하기 전의 listarticle호출
+//			List<ArticleVO> articlesList = boardService.listArticles();
+			request.setAttribute("map", boardService.listArticles(param));
+			
+			//페이지번호를 ?page=2로 주지 않았을 경우에 총 페이지 수의 앞이 출력되도록 하기 위해서
+			request.setAttribute("vo", param);
 			nextPage = "/WEB-INF/view/board/listArticles.jsp";
 		}
 
