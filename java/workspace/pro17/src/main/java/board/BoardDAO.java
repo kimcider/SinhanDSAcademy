@@ -334,21 +334,22 @@ public class BoardDAO {
 	// 이거는 selectPagingArticle이랑 구조가 유사해야한다.
 	public int selectCounter(ArticleVO param) {
 		ArticleVO vo = new ArticleVO();
+		System.out.println("카운터메소드 내의 param: " + param);
 		int count = 0;
 
 		try {
 			con = dataFactory.getConnection();
 			String query = "SELECT COUNT(*) AS cnt FROM t_board WHERE 1=1 ";
 			// 검색 조건 설정
-			if (param.getSearchWord() != null && !"".equals(param.getSearchWord())) {
-				query += " AND title LIKE '%" + param.getSearchWord() + "%'";
-			}
-			if (param.getSearchWord() != null && !"".equals(param.getSearchWord())) {
-				query += " AND content LIKE '%" + param.getSearchWord() + "%'";
-			}
+//			if (param.getSearchWord() != null && !"".equals(param.getSearchWord())) {
+//				query += " AND title LIKE '%" + param.getSearchWord() + "%'";
+//			}
+//			if (param.getSearchWord() != null && !"".equals(param.getSearchWord())) {
+//				query += " AND content LIKE '%" + param.getSearchWord() + "%'";
+//			}
 
 			if (param.getSearchWord() != null && !"".equals(param.getSearchWord())) {
-				query += " AND id LIKE '%" + param.getSearchWord() + "%' OR content LIKE '%" + param.getSearchWord()
+				query += " AND title LIKE '%" + param.getSearchWord() + "%' OR content LIKE '%" + param.getSearchWord()
 						+ "%'";
 			}
 

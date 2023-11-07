@@ -20,6 +20,7 @@ public class BoardService {
 	public Map listArticles(ArticleVO param){
 		//총개수
 		int count = boardDAO.selectCounter(param);
+		System.out.println("counter: " + count);
 		
 		//총 페이지 수
 		int totalPage = count / param.getRowPage(); 

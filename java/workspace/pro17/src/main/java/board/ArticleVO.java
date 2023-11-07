@@ -30,7 +30,7 @@ public class ArticleVO {
 	
 	public ArticleVO(){
 		page = 1;
-		rowPage = 2;
+		rowPage = 1;
 	}
 	
 	//이렇게 하면 컨텐츠에 있는 개행문자를 br태그로 바꿔줄 수 있다. 
