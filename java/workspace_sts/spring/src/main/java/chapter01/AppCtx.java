@@ -11,9 +11,8 @@ public class AppCtx {
 	/*
 	 xml의
 	 <bean id="personService" class="chapter01.PersonServiceImpl">
-		<!-- PersonServiceImpl의 필드명이 name이니까. 프로퍼티의 name도 name이어야한다. -->
 		<property name="name">
-			<value>홍길동</value> <!-- 이렇게 적으면 PersonServiceImpl의 name필드의 값이 홍길동이된다... -->
+			<value>홍길동</value>
 		</property>
 	</bean>
 	
@@ -21,11 +20,15 @@ public class AppCtx {
 	 
 	 * */
 	@Bean
-	public PersonService personService() { // xml의 id를 메소드명으로 사용하면 된다. ㅇㅎ!!!
+	public PersonService personService() { // 여기의 메소드명이 xml의 id역할을 하는 것이다.
 		PersonService ps = new PersonServiceImpl();
 		ps.setName("홍길동");
 		return ps;
 	}
 	
-
+	@Bean
+	public PersonService personService2() {
+		PersonService ps = new PersonServiceImpl("홍길동");
+		return ps;
+	}
 }

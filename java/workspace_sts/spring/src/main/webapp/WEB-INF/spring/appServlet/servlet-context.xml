@@ -23,8 +23,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.test" />
+	<!-- 이러면 chapter05만 감지한다. -->
+	<context:component-scan base-package="chapter05" />
 	
-	
+	<!-- 컨트롤러가 없고, 얘가 뷰 컨트롤러가 되는것 -->
+	<!-- 여기로 접속을 하면 컨트롤러를 만들지 않아도 아래로 접속해도 들어가진다.
+	정적페이지일때 ㅇㅇ -->
+	<view-controller path="/event/index.do"/>
 	
 </beans:beans>

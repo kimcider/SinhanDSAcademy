@@ -7,10 +7,11 @@ import org.springframework.context.annotation.Configuration;
 public class AppCtx {
 	
 	@Bean
-	public MemberDAO memberDAO() { //메소드명이 빈이름이기떄문에 xml에선언된빈이랑 똑같은이름을쓴것
+	public MemberDAO memberDAO() { //메소드명이 빈의 id 역할을 한다.
 		return new MemberDAOImpl();
 	}
 	
+	//setter방식
 	@Bean
 	public MemberService memberService() {
 		MemberServiceImpl m = new MemberServiceImpl();
@@ -22,4 +23,10 @@ public class AppCtx {
 		return m;
 	}
 	
+	
+	//생성자 방식
+	@Bean
+	public MemberService memberService2() {
+		return new MemberServiceImpl(memberDAO());
+	}
 }
