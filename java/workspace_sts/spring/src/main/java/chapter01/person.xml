@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 항상 xml코딩할떄 클래스를 작성할때는 컨트롤 누르고 마우스를 대봐라. -->
+	<bean id="personService" class="chapter01.PersonServiceImpl">
+		<!-- PersonServiceImpl의 필드명이 name이니까. 프로퍼티의 name도 name이어야한다. -->
+		<property name="name">
+			<value>홍길동</value> <!-- 이렇게 적으면 PersonServiceImpl의 name필드의 값이 홍길동이된다... -->
+		</property>
+	</bean>
+	<bean id="personService1" class="chapter01.PersonServiceImpl">
+		<!-- 생성자를 이용한 DI -->
+		<constructor-arg value="이순신" />
+	</bean>
+	<bean id="personService2" class="chapter01.PersonServiceImpl">
+		<!-- 생성자를 이용한 DI -->
+		<!-- 
+			사실상 new PersonServiceImpl("손흥민", 23)이랑 똑같은것.
+		 -->
+		<constructor-arg value="손흥민"/>
+		<constructor-arg value="23"/>
+	</bean>
+</beans>

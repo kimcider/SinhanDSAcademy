@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="memberService" class="chapter02.MemberServiceImpl">
+		<!-- 여기서 ref는  -->
+		<property name="memberDAO" ref="memberDAO"/>
+	</bean>
+	<!-- 여기서 생성된 객체가 위의 ref에 사용되는것
+	객체가 선언되는 순서같은건 상관없다. -->
+	<bean id="memberDAO" class="chapter02.MemberDAOImpl"></bean>
+
+	
+	<!-- 이런식으로도 참조시킬 수 있다. 생성자로 ㅇㅇ -->
+	<bean id="memberService2" class="chapter02.MemberServiceImpl">
+		<constructor-arg ref="memberDAO"></constructor-arg>
+	</bean>
+</beans>
