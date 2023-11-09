@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	test ${msg }
+	${memberVO.id } / ${memberVO.name }
 </body>
 </html>

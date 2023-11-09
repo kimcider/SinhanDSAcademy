@@ -3,32 +3,45 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-	
+
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
-		<!-- 이 클래스의  -->
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- 초기값을 이렇게 설정 -->
+		<!-- 이 클래스의 -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<!-- XML방식에서는 초기값을 이렇게 설정 -->
+		<!-- <init-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value> 
+			</init-param> -->
+
+		<!-- java방식 -->
+		<!-- 두개의 초기화파라미터가 필요 -->
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>chapter05.MVCConfig</param-value>
 		</init-param>
+		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+
 	<servlet-mapping>
-		<!-- appServlet이름을 가진 서블릿으로 보내주는것 그게 바로 위의 서블릿.  -->
+		<!-- appServlet이름을 가진 서블릿으로 보내주는것 그게 바로 위의 서블릿. -->
 		<servlet-name>appServlet</servlet-name>
 		<!-- 모든 요청이 들어오면,appservlet으로 보내주는것 -->
 		<url-pattern>/</url-pattern>

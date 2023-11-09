@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Setter
 public class MemberServiceImpl implements MemberService {
-
 	//이거를 넣어주면!!!!!!! 자동으로 맵핑이된다.
 	@Autowired
 	//그런데 MemberDAOImpl도 MemberDAO를 구현하고 adminDAOImpl도 memberDAO를 구현한다면
@@ -22,6 +21,7 @@ public class MemberServiceImpl implements MemberService {
 	@Qualifier("adminDAO")
 	private MemberDAO dao;
 	
+	
 	//이렇게 id 이름이 같다면  객체로 주입을 시켜준다.
 	//이러면 appctx에 메소드명이 memberDAO로되어있는애로 주겠지
 //	@Autowired
@@ -31,5 +31,4 @@ public class MemberServiceImpl implements MemberService {
 	public void listMembers() {
 		dao.listMembers();
 	}
-
 }

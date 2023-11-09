@@ -1,13 +1,18 @@
 package chapter05;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 //@RequestMapping("/member")  
@@ -132,5 +137,90 @@ public class MemberController {
 		
 		System.out.println(vo);
 		return "member/test";
+	}
+	
+	@GetMapping("param2_1.do")
+	public String temp1(HttpServletRequest request, MemberVO vo) {
+		request.setAttribute("msg", "안녕하세요");
+		return "/member/test";
+	}
+	@GetMapping("param2_1_test.do")
+	public String temp1_test(MemberVO vo) {
+		return "/member/test";
+	}
+	
+	
+	/*4. PathVariable을 사용하는 방법*/
+	@GetMapping("/view/{id}")
+	/* 이렇게 쓰면 해당 경로에 이게 들어간다...? */
+	/* http://api.abc.com/product/list/{title(제목)}/{자바(검색어)}/{date(정렬기준)}
+	 * http://api.abc.com/product/list/ 경로 뒤에 변수들로 처리하는것
+	 * 
+	 * */
+	public String param4_1(@PathVariable String id) {
+		System.out.println(id);
+		return "member/index";
+	}
+	//이런식으로 하면 
+	//http://localhost:8000/test/view/kong(요기!!) 이렇게 접속할 경우, 경로의 kong이 id로 들어오게된다.
+	//ㅇㅎ....신기하넹.
+	//그런데 많이쓰이지는 않는다. post방식에서는 쓸수도 없다 ㅎㅎ...
+	//겟방식으로 한다고 하면 ?해서 인자로 넘겨서 쓸 수 있기때문에 굳이 써야하는거는 아니다
+	
+	
+	
+	/* 값을 저장하는 방법 */
+	
+	//임시로 필드 그냥여기다쓰겠다. ㄱ가독성을위해서
+	@Autowired
+	private MemberService service;
+	
+
+	@GetMapping("/set.do")
+			//맴버는 커맨드로 받으려한거고
+			//모델은 저장하려고 하는것
+			//모델은 임포트해서쓰면된다 ㅇㅇ. 
+	public String set(Model model, MemberVO vo) {
+		MemberVO mvo = service.getMember(vo);
+		return "member/index";
+	}
+	@GetMapping("/set2.do")
+	public String set2(Model model, MemberVO vo, HttpServletRequest req) {
+		MemberVO mvo = service.getMember(vo);
+		req.setAttribute("mvo", mvo);
+		return "member/index";
+	}
+	
+	@GetMapping("/set3.do")
+	public String set3(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+		MemberVO mvo = service.getMember(vo);
+		req.setAttribute("mvo", mvo);
+//		HttpSession sess = req.getSession();
+		sess.setAttribute("svo", mvo);
+		return "member/index";
+	}
+	
+	//이거는 모델 ㅎㅎ
+	@GetMapping("/set4.do")
+	public String set4(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+		MemberVO mvo = service.getMember(vo);
+		req.setAttribute("mvo", mvo);
+		sess.setAttribute("svo", mvo);
+		model.addAttribute("modelVO",mvo);
+		return "member/index";
+	}
+	
+	//이거는 모델 앤 뷰
+	@GetMapping("/set5.do")
+	public ModelAndView set5(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+		MemberVO mvo = service.getMember(vo);
+		req.setAttribute("mvo", mvo);
+		sess.setAttribute("svo", mvo);
+		model.addAttribute("modelVO",mvo);
+		//modelandview
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("mavvo",mvo);
+		mav.setViewName("member/index");
+		return mav;
 	}
 }

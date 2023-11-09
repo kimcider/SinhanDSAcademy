@@ -1,5 +1,7 @@
 package chapter02;
 
+import lombok.ToString;
+
 public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void listMembers() {
