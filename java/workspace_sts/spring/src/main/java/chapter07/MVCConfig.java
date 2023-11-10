@@ -46,8 +46,9 @@ public class MVCConfig implements WebMvcConfigurer{
 		HikariDataSource dataSource = new HikariDataSource();
 		
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		
-		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/project");
+		//여기서 3306은 mysql 디폴트 포트번호, project는 우리가 접근할 스키마 이름
+//		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/project");
+		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test");
 		//들어갈 유저이름
 		dataSource.setUsername("testuser");
 		//유저의 비밀번호. 
@@ -59,12 +60,10 @@ public class MVCConfig implements WebMvcConfigurer{
 	public SqlSessionFactory sqlSessionFactory() throws Exception{
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
 
-		// 데이터소스 빈을 주입해줘야한다.
-		//위에서 만든 dataSource빈을 주입해주는것.
+		/* DataSource Bean 주입 */
 		ssf.setDataSource(dataSource());
 		
-		//slq은 xml파일로 따로 만들게될것이고, 그 sql이 들어있는 xml파일의 위치를 지정해야한다.
-		//sql(xml파일)의 위치
+		/* SQL문을 담아 둘 xml파일의 경로 설정 */
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		//classpath로해야 다른 프로젝트에서도 쓰기 편함
 		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); 

@@ -17,6 +17,8 @@ public class StudentDAO {
 		//select는 한건 selectList는 여러건
 		//그리고 아까 말했더 ㄴnamespace.id를써줘야한다.
 		
+		//DAO는 그냥 xml의 sql만 호출해주면된다.
+		//진짜 할일이 없어짐 이제 ㅎㅎ
 		return sst.selectList("student.all");
 	}
 }
