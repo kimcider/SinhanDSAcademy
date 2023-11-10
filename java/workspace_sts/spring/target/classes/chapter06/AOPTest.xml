@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Calculator클래스와 LoggingAdvice의 Bean객체를 생성 -->
+	<bean id="calcTarget" class="chapter06.Calculator"/>
+	<bean id="logAdvice" class="chapter06.LoggingAdvice"/>
+	
+	<!-- 스프링 프레임워크에서 제공하는 ProxyFactoryBean을 이용해 타깃과 어드바이스를 엮어준다. -->
+	<bean id="proxyCal" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 타겟 빈을 calTarget빈으로 지정 -->
+		<property name="target" ref="calcTarget"/>
+		<!-- 스프링의 ProxyFactoryBean의 InterceptoorNames속성에 logAdvice를 어드바이스빈으로 설정하여 타깃 클래스의 메소드 호출시 logAdvice를 실행 -->
+		<property name="interceptorNames">
+			<list>
+				<value>logAdvice</value>
+			</list>
+		</property>
+	</bean>
+</beans>

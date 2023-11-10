@@ -21,7 +21,7 @@ public class MemberController {
 	//Get방식으로 맵핑하기!
 	@GetMapping("/member/index.do") //맵핑될 URL // Jsp 경로 http://localhost:8000/test/member/index.do로 접속하면 된다.  여기서 test는 server의 contextPath이다. 처음에 패키지만들때 kr.co.test로 만들어서 ㅇㅇ. 이거 서버 가서 테스트 없애도된다. 
 	public String index() {
-		System.out.println("index");
+		System.out.println("index.do로 맵핑되기는 했습니다.");
 		return "member/index";	
 		//아까 prefix : /WEB-INF/views/라고했다.
 			//<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -179,45 +179,49 @@ public class MemberController {
 	@GetMapping("/set.do")
 			//맴버는 커맨드로 받으려한거고
 			//모델은 저장하려고 하는것
-			//모델은 임포트해서쓰면된다 ㅇㅇ. 
-	public String set(Model model, MemberVO vo) {
-		MemberVO mvo = service.getMember(vo);
+			
+	public String set(MemberVO vo) {
+//		MemberVO mvo = service.getMember(vo);
 		return "member/index";
 	}
 	@GetMapping("/set2.do")
-	public String set2(Model model, MemberVO vo, HttpServletRequest req) {
+	public String set2(MemberVO vo, HttpServletRequest req) {
 		MemberVO mvo = service.getMember(vo);
 		req.setAttribute("mvo", mvo);
 		return "member/index";
 	}
 	
+	
 	@GetMapping("/set3.do")
-	public String set3(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+	public String set3(MemberVO vo, HttpServletRequest req) {
 		MemberVO mvo = service.getMember(vo);
 		req.setAttribute("mvo", mvo);
+		HttpSession sess = req.getSession();
+		sess.setAttribute("svo", mvo);
+		return "member/index";
+	}
+	
+	@GetMapping("/set3_1.do")
+	public String set3_1(MemberVO vo, HttpSession sess) {
+		MemberVO mvo = service.getMember(vo);
 //		HttpSession sess = req.getSession();
 		sess.setAttribute("svo", mvo);
 		return "member/index";
 	}
 	
 	//이거는 모델 ㅎㅎ
+	//모델은 임포트해서쓰면된다 ㅇㅇ. 
 	@GetMapping("/set4.do")
-	public String set4(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+	public String set4(Model model, MemberVO vo) {
 		MemberVO mvo = service.getMember(vo);
-		req.setAttribute("mvo", mvo);
-		sess.setAttribute("svo", mvo);
 		model.addAttribute("modelVO",mvo);
 		return "member/index";
 	}
 	
 	//이거는 모델 앤 뷰
 	@GetMapping("/set5.do")
-	public ModelAndView set5(Model model, MemberVO vo, HttpServletRequest req, HttpSession sess) {
+	public ModelAndView set5(MemberVO vo) {
 		MemberVO mvo = service.getMember(vo);
-		req.setAttribute("mvo", mvo);
-		sess.setAttribute("svo", mvo);
-		model.addAttribute("modelVO",mvo);
-		//modelandview
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("mavvo",mvo);
 		mav.setViewName("member/index");
