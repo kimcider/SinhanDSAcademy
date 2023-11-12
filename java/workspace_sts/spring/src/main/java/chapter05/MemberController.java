@@ -21,6 +21,7 @@ public class MemberController {
 	//Get방식으로 맵핑하기!
 	@GetMapping("/member/index.do") //맵핑될 URL // Jsp 경로 http://localhost:8000/test/member/index.do로 접속하면 된다.  여기서 test는 server의 contextPath이다. 처음에 패키지만들때 kr.co.test로 만들어서 ㅇㅇ. 이거 서버 가서 테스트 없애도된다. 
 	public String index() {
+		System.out.println("리빌딩 테스트 ");
 		System.out.println("index.do로 맵핑되기는 했습니다.");
 		return "member/index";	
 		//아까 prefix : /WEB-INF/views/라고했다.

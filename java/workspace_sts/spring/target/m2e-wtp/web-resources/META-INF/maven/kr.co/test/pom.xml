@@ -136,6 +136,22 @@
 			<version>8.0.33</version>
 		</dependency>
 
+		<!-- oracle DB -->
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc11</artifactId>
+			<version>23.3.0.23.09</version>
+		</dependency>
+
+		<!-- spring jdbc -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>6.0.13</version>
+		</dependency>
+
 		<!-- hikari Connection Pool -->
 		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
 		<dependency>

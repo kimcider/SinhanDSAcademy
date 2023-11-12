@@ -1,4 +1,4 @@
-package chapter07;
+package chapter07_oracleAtHome;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -44,14 +44,15 @@ public class MVCConfig implements WebMvcConfigurer{
 	@Bean(destroyMethod = "close")
 	public HikariDataSource dataSource() {
 		HikariDataSource dataSource = new HikariDataSource();
-		//드라이버 바꿔넣기.
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		//url바꿔넣으면 된다.
-		dataSource.setJdbcUrl("jdbc:oracle:thin:@10.211.55.5:1521:xe");
+		
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		//여기서 3306은 mysql 디폴트 포트번호, project는 우리가 접근할 스키마 이름
+//		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/project");
+		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/test");
 		//들어갈 유저이름
-		dataSource.setUsername("");
+		dataSource.setUsername("testuser");
 		//유저의 비밀번호. 
-		dataSource.setPassword("");
+		dataSource.setPassword("test1234");
 		return dataSource;
 	}
 	// Mybatis 빈 만들기/
