@@ -4,23 +4,6 @@
 	<resultMap id="svo" type="chapter08.StudentVO">
 		<result column="tel" property="telephone"/>
 	</resultMap>
-	<select id="all" resultType="chapter08.StudentVO">
-		SELECT * FROM student
-	</select>
-
-	<select id="search" resultType="java.util.Map"
-		parameterType="java.util.Map">
-		SELECT * FROM student
-		<if test="searchWord != null and searchWord != ''">
-			<if test="searchType != 'all'">
-				WHERE ${searchType} LIKE '%${searchWord}%'
-			</if>
-			<if test="searchType == 'all'">
-				WHERE name LIKE '%${searchWord}%' or id LIKE
-				'%${searchWord}%'
-			</if>
-		</if>
-	</select>
 
 	<sql id="whereSql">
 		<where>
@@ -45,14 +28,9 @@
 		SELECT COUNT(*) FROM student
 		<include refid="whereSql" />
 	</select>
-	<select id="search2" resultMap="svo"
+	<select id="search2" resultType="chapter08.StudentVO"
 		parameterType="chapter08.StudentVO">
 		SELECT studno, name, id, tel FROM student
 		<include refid="whereSql" />
-	</select>
-	
-	<select id="view" parameterType="java.lang.Integer"
-		resultType="chapter08.StudentVO">
-		SELECT * FROM student WHERE studno = #{asdf}
 	</select>
 </mapper>
