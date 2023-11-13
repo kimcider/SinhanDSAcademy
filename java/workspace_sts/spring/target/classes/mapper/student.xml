@@ -93,11 +93,11 @@
 		<where>
 			<if test="searchWord != null and searchWord != ''">
 				<if test="searchType != 'all'">
-					${searchType} LIKE '%${searchWord}%'
+					(${searchType} LIKE '%${searchWord}%')
 				</if>
 				<if test="searchType == 'all'">
-					name LIKE '%${searchWord}%' or id LIKE
-					'%${searchWord}%'
+					(name LIKE '%${searchWord}%' or id LIKE
+					'%${searchWord}%')
 				</if>
 			</if>
 
