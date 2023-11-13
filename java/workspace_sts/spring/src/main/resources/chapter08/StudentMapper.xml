@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter08.StudentMapper">
+	<resultMap id="svo" type="chapter08.StudentVO">
+		<result column="tel" property="telephone"/>
+	</resultMap>
+	<select id="all" resultType="chapter08.StudentVO">
+		SELECT * FROM student
+	</select>
+
+	<select id="search" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * FROM student
+		<if test="searchWord != null and searchWord != ''">
+			<if test="searchType != 'all'">
+				WHERE ${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="searchType == 'all'">
+				WHERE name LIKE '%${searchWord}%' or id LIKE
+				'%${searchWord}%'
+			</if>
+		</if>
+	</select>
+
+	<sql id="whereSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType == 'all'">
+					name LIKE '%${searchWord}%' or id LIKE
+					'%${searchWord}%'
+				</if>
+			</if>
+
+			<if test="sgrade != null and sgrade != ''">
+				AND grade = #{sgrade}
+			</if>
+		</where>
+	</sql>
+
+	<select id="count" resultType="int"
+		parameterType="chapter08.StudentVO">
+		SELECT COUNT(*) FROM student
+		<include refid="whereSql" />
+	</select>
+	<select id="search2" resultMap="svo"
+		parameterType="chapter08.StudentVO">
+		SELECT studno, name, id, tel FROM student
+		<include refid="whereSql" />
+	</select>
+	
+	<select id="view" parameterType="java.lang.Integer"
+		resultType="chapter08.StudentVO">
+		SELECT * FROM student WHERE studno = #{asdf}
+	</select>
+</mapper>

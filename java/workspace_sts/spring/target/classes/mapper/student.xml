@@ -1,9 +1,140 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="student">
-
+	<resultMap id="svo" type="chapter07.StudentVO">
+		<result column="tel" property="telephone"/>
+	</resultMap>
 	<select id="all" resultType="chapter07.StudentVO">
 		SELECT * FROM student
 	</select>
 
+	<!-- 여기에 파라미터타입을 java.util.Map으로 줄 수 도 있다. -->
+	<!-- <select id="search" resultType="java.util.Map" parameterType="java.util.Map"> 
+		SELECT * FROM student WHERE name LIKE'%${searchWord}%' </select> -->
+	<select id="search" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * FROM student
+		<if test="searchWord != null and searchWord != ''">
+			<!-- 이 안에 들어온것은 일단 검색을 했다는 얘기임 -->
+			<!-- name으로 검색했을 경우 -->
+			<if test="searchType != 'all'">
+				WHERE ${searchType} LIKE '%${searchWord}%'
+			</if>
+			<if test="searchType == 'all'">
+				WHERE name LIKE '%${searchWord}%' or id LIKE
+				'%${searchWord}%'
+			</if>
+		</if>
+
+
+	</select>
+
+	<!-- 위와 달리 VO를 사용하는 방법 -->
+	<!-- 맨 처음. sgrade추가하기 전의 코드 -->
+	<!-- SELECT studno, name, id, tel FROM student sgrade추가하기 이전의 함수 WHERE 빼줘야될꺼같아서 
+		이거 이렇게함 여기까지 하면 1학년 선택하고 '훈'을 검색하면 에러가 날 것이다. WHERE절을 두번써서 ㅇㅇ. -->
+		<!-- 
+	<select id="search2" resultType="chapter07.StudentVO"
+		parameterType="chapter07.StudentVO">
+		SELECT studno, name, id, tel FROM student
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType != 'all'">
+					WHERE ${searchType} LIKE '%${searchWord}%' </if>
+				<if test="searchType == 
+			'all'"> WHERE name LIKE '%${searchWord}%' or id LIKE
+					'%${searchWord}%' </if>
+			</if>
+
+			<if test="sgrade != null and sgrade != ''">
+				AND grade = #{sgrade}
+			</if>
+		</where>
+	</select>
+ 	-->
+ 
+	<!-- Where절을 include로 빼기 이전의 코드 -->
+	<!-- 
+	<select id="search2" resultType="chapter07.StudentVO" parameterType="chapter07.StudentVO"> 
+		SELECT studno, name, id, tel FROM student 
+		<where> 
+			<if test="searchWord != null and searchWord != ''"> 
+				<if test="searchType != 'all'"> 
+					${searchType} LIKE '%${searchWord}%' 
+				</if> 
+			
+				<if test="searchType == 'all'"> 
+					name LIKE '%${searchWord}%' or id LIKE '%${searchWord}%' 
+				</if> 
+			</if> 
+			
+			<if test="sgrade != null and sgrade != ''"> 
+				AND grade = #{sgrade} 
+			</if> 
+		</where> </select> -->
+
+	<!-- Where절을 include로 빼기 이전의 코드 -->
+	<!--
+	<select id="count" resultType="int" parameterType="chapter07.StudentVO"> 
+		SELECT COUNT(*) FROM student 
+		<where> 
+			<if test="searchWord != null and searchWord != ''"> 
+				<if test="searchType != 'all'"> 
+					${searchType} LIKE '%${searchWord}%' 
+				</if> 
+				<if test="searchType == 'all'"> 
+					name LIKE '%${searchWord}%' or id LIKE '%${searchWord}%' 
+				</if> 
+			</if> 
+			<if test="sgrade != null and sgrade != ''"> 
+				AND grade = #{sgrade} 
+			</if> 
+		</where> 
+	</select> 
+	
+	-->
+	<!-- -->
+	<sql id="whereSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType == 'all'">
+					name LIKE '%${searchWord}%' or id LIKE
+					'%${searchWord}%'
+				</if>
+			</if>
+
+			<if test="sgrade != null and sgrade != ''">
+				AND grade = #{sgrade}
+			</if>
+		</where>
+	</sql>
+
+	<select id="count" resultType="int"
+		parameterType="chapter07.StudentVO">
+		SELECT COUNT(*) FROM student
+		<include refid="whereSql" />
+	</select>
+	<!-- resultMap으로 바꾸기 전의 코드
+	<select id="search2" resultType="chapter07.StudentVO"
+		parameterType="chapter07.StudentVO">
+		SELECT studno, name, id, tel FROM student
+		<include refid="whereSql" />
+	</select>
+	 -->
+	<select id="search2" resultMap="svo"
+		parameterType="chapter07.StudentVO">
+		SELECT studno, name, id, tel FROM student
+		<include refid="whereSql" />
+	</select>
+	
+	<!-- java.lang.Integer말고 그냥 int로 써도 된다 ㅇㅇ int는 그냥 mybatis에서 alias를 걸어둔것 -->
+	<select id="view" parameterType="java.lang.Integer"
+		resultType="chapter07.StudentVO">
+		<!-- 만약 Map이라면 key로 그 속성명을 입력해서 값을 받아오면 된다. 지금은 파라미터가 Integer이면 그 값을 어떻게 
+			가져와야할까? 이 경우는 아무거나 써도 들어간다. 어차피 인풋이 Integer 하나밖에 없어서 아무거나 써도 된다 ㅇㅇ . -->
+		SELECT * FROM student WHERE studno = #{asdf}
+	</select>
 </mapper>

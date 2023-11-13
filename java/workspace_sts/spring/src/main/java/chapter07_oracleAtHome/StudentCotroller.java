@@ -20,7 +20,7 @@ public class StudentCotroller {
 	 */
 	
 	
-	@GetMapping("/student/index.do")
+	@GetMapping("/student2/index.do")
 	public String index(Model model) {
 		model.addAttribute("list", service.all());
 		return "student/index";

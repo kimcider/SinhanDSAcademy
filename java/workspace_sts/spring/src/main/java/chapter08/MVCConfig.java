@@ -1,8 +1,9 @@
-package chapter07_oracleAtHome;
+package chapter08;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan(basePackages = {"chapter07_oracleAtHome"})
+@ComponentScan(basePackages = {"chapter08"})
 @EnableWebMvc
+//인터페이스를 스캔해주는 설정
+@MapperScan(basePackages = {"chapter08"}, annotationClass = Mapper.class)
 public class MVCConfig implements WebMvcConfigurer{
 	
 //	//아래 코드를 넣어주지 않으면 화면에 나오지는 않는다. 접속을 할 때 맵핑된 메소드에 정의해둔 sysout프린트만 되면 된다.
@@ -44,14 +47,12 @@ public class MVCConfig implements WebMvcConfigurer{
 	@Bean(destroyMethod = "close")
 	public HikariDataSource dataSource() {
 		HikariDataSource dataSource = new HikariDataSource();
-		//드라이버 바꿔넣기.
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		//url바꿔넣으면 된다.
-		dataSource.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe");
-//		dataSource.setJdbcUrl("jdbc:oracle:thin:@10.211.55.5:1521:xe");
-		//들어갈 유저이름
+		
+//		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		//로그를 보기위해 드라이버 변경
+		dataSource.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		dataSource.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/test");
 		dataSource.setUsername("testuser");
-		//유저의 비밀번호. 
 		dataSource.setPassword("test1234");
 		return dataSource;
 	}
@@ -64,15 +65,15 @@ public class MVCConfig implements WebMvcConfigurer{
 		ssf.setDataSource(dataSource());
 		
 		/* SQL문을 담아 둘 xml파일의 경로 설정 */
-		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		//classpath로해야 다른 프로젝트에서도 쓰기 편함
-		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); 
+//		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+//		//classpath로해야 다른 프로젝트에서도 쓰기 편함
+//		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); 
 		return ssf.getObject();
 	}
 	
-	//DAO에서 주입받을 객체(빈)을 등록
-	@Bean
-	public SqlSessionTemplate sqlSessionTemplate() throws Exception{
-		return new SqlSessionTemplate(sqlSessionFactory());
-	}
+//	//DAO에서 주입받을 객체(빈)을 등록
+//	@Bean
+//	public SqlSessionTemplate sqlSessionTemplate() throws Exception{
+//		return new SqlSessionTemplate(sqlSessionFactory());
+//	}
 }
