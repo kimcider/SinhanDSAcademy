@@ -34,10 +34,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<!-- <param-value>chapter05.MVCConfig</param-value> -->
-			<!-- <param-value>chapter07.MVCConfig</param-value> -->
-			<!-- <param-value>chapter07_oracleAtHome.MVCConfig</param-value> -->
-			<param-value>chapter08.MVCConfig</param-value>
+			<param-value>chapter07.MVCConfig</param-value>
 		</init-param>
 		
 		<load-on-startup>1</load-on-startup>
