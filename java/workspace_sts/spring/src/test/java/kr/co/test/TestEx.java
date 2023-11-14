@@ -1,5 +1,7 @@
 package kr.co.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +19,7 @@ public class TestEx {
 		System.out.println("마지막 한번만");
 	}
 	
-	@Before
+	//@Before
 	public void before() {
 		System.out.println("before");
 	}
@@ -26,7 +28,7 @@ public class TestEx {
 		System.out.println("before2");
 	}
 	
-	@After
+//	@After
 	public void After() {
 		System.out.println("after");
 	}
@@ -36,6 +38,7 @@ public class TestEx {
 	public void test() {
 		System.out.println("테스트");
 	}
+	
 	@Test
 	public void test2() {
 		System.out.println("테스트2");
@@ -45,7 +48,7 @@ public class TestEx {
 	public int temp() {
 		return 5;
 	}
-	@Test
+//	@Test
 	public void tempTest() {
 		System.out.println(temp());
 	}

@@ -2,12 +2,15 @@ package chapter09;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
+	@Transactional(rollbackFor = Exception.class)
 	public boolean insert(MemberVO mvo) {
 		System.out.println("등록 전 no: " + mvo.getNo()); //null일꺼고
 		int result = mapper.insertMember(mvo); //이렇게 하면 회원이 등록은 되긴 하는데

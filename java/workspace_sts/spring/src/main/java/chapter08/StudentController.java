@@ -17,7 +17,9 @@ public class StudentController {
 	private String index3(Model model, StudentVO vo) {
 		model.addAttribute("list", service.search2(vo));
 		model.addAttribute("total", service.count(vo));
-		log.debug("logTest");
+		
+		//log필드를 사용해 
+		log.debug("total: " + model.getAttribute("total"));
 		return "student/index";
 	}
 }

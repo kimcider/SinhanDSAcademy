@@ -18,13 +18,30 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	
 	<!-- 여기에 추가되는것 -->
+	<!-- 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	 -->
+	 
+	 <!-- tiles쓰기위한코드추가 -->
+	 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	 	<!-- 위 클래스의 필드 명.  -->
+	 	<beans:property name="definitions">
+	 		<!-- 그 안의 값을 넣어주는것 그래서 이 파일을 보도록 지정 -->
+	 		<beans:list>
+	 			<beans:value>classpath:tiles/*.xml</beans:value>
+	 		</beans:list>
+	 	</beans:property>
+	 	<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"></beans:property>
+	 </beans:bean>
+	 <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	 	<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	 </beans:bean>
 	<!-- 이러면 chapter05만 감지한다. -->
-	<context:component-scan base-package="chapter05" />
+	<!-- <context:component-scan base-package="chapter05" /> -->
+	<context:component-scan base-package="kr.co.test" />
 	
 	<!-- 컨트롤러가 없고, 얘가 뷰 컨트롤러가 되는것 -->
 	<!-- 여기로 접속을 하면 컨트롤러를 만들지 않아도 아래로 접속해도 들어가진다.

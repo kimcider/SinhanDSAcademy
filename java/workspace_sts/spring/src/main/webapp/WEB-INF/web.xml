@@ -15,7 +15,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-ㄴ
+	ㄴ
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
@@ -23,20 +23,26 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
 		<!-- XML방식에서는 초기값을 이렇게 설정 -->
-		<!-- <init-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value> 
-			</init-param> -->
-
+		<!-- 
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			</param-value>
+		</init-param>
+ 		-->
 		<!-- java방식 -->
 		<!-- 두개의 초기화파라미터가 필요 -->
 		<init-param>
 			<param-name>contextClass</param-name>
-			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+			</param-value>
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>chapter09.MVCConfig</param-value>
+			<param-value>chapter08.MVCConfig</param-value>
 		</init-param>
 		
+
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -47,11 +53,12 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<!-- 이렇게 맵핑된애들은 WEB-INF/spring/appserver/servlet-context.xml에 적힌다. -->
-	
+
 	<!-- 필터 등록 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>

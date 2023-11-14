@@ -31,7 +31,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		//홈을 리턴하면 webapp/web-inf/views/home.jsp를 포워딩시켜준다. 
-		return "home";
+		return "main";
 	}
 	
 }

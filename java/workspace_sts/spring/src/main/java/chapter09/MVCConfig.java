@@ -7,7 +7,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -21,6 +23,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableWebMvc
 //인터페이스를 스캔해주는 설정
 @MapperScan(basePackages = {"chapter09"}, annotationClass = Mapper.class)
+@EnableTransactionManagement
 public class MVCConfig implements WebMvcConfigurer{
 	
 //	//아래 코드를 넣어주지 않으면 화면에 나오지는 않는다. 접속을 할 때 맵핑된 메소드에 정의해둔 sysout프린트만 되면 된다.
@@ -60,20 +63,14 @@ public class MVCConfig implements WebMvcConfigurer{
 	@Bean
 	public SqlSessionFactory sqlSessionFactory() throws Exception{
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
-
-		/* DataSource Bean 주입 */
 		ssf.setDataSource(dataSource());
-		
-		/* SQL문을 담아 둘 xml파일의 경로 설정 */
-//		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//		//classpath로해야 다른 프로젝트에서도 쓰기 편함
-//		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml")); 
 		return ssf.getObject();
 	}
-	
-//	//DAO에서 주입받을 객체(빈)을 등록
-//	@Bean
-//	public SqlSessionTemplate sqlSessionTemplate() throws Exception{
-//		return new SqlSessionTemplate(sqlSessionFactory());
-//	}
+
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		DataSourceTransactionManager dtm = new DataSourceTransactionManager();
+		dtm.setDataSource(dataSource());
+		return dtm;
+	}
 }
