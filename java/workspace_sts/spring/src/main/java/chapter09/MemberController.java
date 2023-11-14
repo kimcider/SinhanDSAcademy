@@ -16,8 +16,10 @@ public class MemberController {
 		return "member/write";
 	}
 	
+	
 	@PostMapping("/member/regist.do")
 	public String insert(MemberVO vo) {
+		
 		service.insert(vo);
 		return "redirect:regist.do";
 	}

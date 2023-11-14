@@ -47,4 +47,18 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<!-- 이렇게 맵핑된애들은 WEB-INF/spring/appserver/servlet-context.xml에 적힌다. -->
+	
+	<!-- 필터 등록 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
