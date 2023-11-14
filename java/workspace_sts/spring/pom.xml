@@ -119,6 +119,15 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- spring-test -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.2.25.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

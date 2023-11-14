@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter09.MemberMapper">
+
+	<!-- insert update delete는 무조건 정수를 리턴하기 때문에 resultType을 설정하지 못한다. -->
+	<insert id="insertMember" parameterType="chapter09.MemberVO">
+		INSERT INTO member (
+			<!-- no는 auto Increament이기떄문에 no는 넣어주는게아니다. -->
+			id, name
+		) VALUES (
+			<!-- Statement로 쓰려면 '${id}' 이렇게 따옴표를 넣어줘야 한다. -->
+			<!-- 회원가입은 Prepared로해야한다. -->
+			#{id}, #{name}
+		)
+		<!-- 이때 no를 왜 keyProperty라고하는지는, 
+			여기서의 no를 위의 parameterType에 넣어준다. 
+			이 객체 안에 no를 넣어주는것....ㄷㄷ
+		 -->
+		<selectKey keyProperty="no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertHobby" parameterType="chapter09.HobbyVO">
+		INSERT INTO hobby(
+			<!-- 이거 여기 컬럼명만 써두고 다른 편집기가서 ','을 '}, #{'으로 바꾸면 아래 value쉽게쓸수있다.-->
+			hobbyname, member_no
+		) VALUES(
+			#{hobbyname}, #{member_no}
+		)
+	</insert>
+</mapper>
