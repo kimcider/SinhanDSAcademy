@@ -39,6 +39,8 @@ public class MemberController {
 			String ext = org.substring(org.lastIndexOf("."));
 			//실제 파일 명
 			String real = System.currentTimeMillis() + ext;  
+			vo.setFilename_org(org);
+			vo.setFilename_real(real);
 			
 			System.out.println("originalname: " + org);
 			System.out.println("realname: " + org);
@@ -52,8 +54,6 @@ public class MemberController {
 				e.printStackTrace();
 			}
 			
-			vo.setFilename_org(org);
-			vo.setFilename_real(real);
 		}
 		service.insert(vo);
 		return "redirect:regist.do";
