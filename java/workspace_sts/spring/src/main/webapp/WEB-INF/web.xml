@@ -29,7 +29,7 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
 			</param-value>
 		</init-param>
- 		-->
+		-->
 		<!-- java방식 -->
 		<!-- 두개의 초기화파라미터가 필요 -->
 		<init-param>
@@ -39,10 +39,9 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>chapter08.MVCConfig</param-value>
+			<param-value>chapter10.MVCConfig</param-value>
 		</init-param>
 		
-
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

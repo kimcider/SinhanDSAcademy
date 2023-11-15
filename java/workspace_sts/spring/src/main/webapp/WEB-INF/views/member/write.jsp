@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="regist.do" method="post">
+	<form action="regist.do" method="post" enctype="multipart/form-data">
 		아이디: <input type="text" name="id"><br>
 		이름 : <input type="text" name="name"><br>
 		취미 : 
@@ -16,6 +16,7 @@
 			<input type="checkbox" value="독서" name="hobbyname">독서
 			<input type="checkbox" value="낚시" name="hobbyname">낚시
 			<input type="checkbox" value="널뛰기" name="hobbyname">널뛰기<br>
+		첨부파일: <input type="file" name="filename"><br>
 		<input type="submit" value="등록">
 	</form>
 </body>

@@ -26,14 +26,15 @@ public class MemberService {
 		
 		if(result > 0) {
 			HobbyVO hvo = new HobbyVO();
-			hvo.setMember_no(mvo.getNo());
+			int member_no = mvo.getNo();
+			hvo.setMember_no(member_no);
 			//반복시키면된다.
 			for(String hobbyname : mvo.getHobbyname()) {
 				hvo.setHobbyname(hobbyname);
 				mapper.insertHobby(hvo);
 			}
+			return true;
 		}
-		
-		return true;
+		return false;
 	}
 }

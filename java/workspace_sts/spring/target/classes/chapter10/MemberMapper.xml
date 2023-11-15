@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter10.MemberMapper">
+	<insert id="insertMember" parameterType="chapter10.MemberVO">
+		INSERT INTO member (
+			id, name, filename_org, filename_real
+		) VALUES (
+			#{id}, #{name}, #{filename_org}, #{filename_real}
+		)
+		<selectKey keyProperty="no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertHobby" parameterType="chapter10.HobbyVO">
+		INSERT INTO hobby(
+			hobbyname, member_no
+		) VALUES(
+			#{hobbyname}, #{member_no}
+		)
+	</insert>
+	
+	<select id="list" resultType="chapter10.MemberVO">
+		SELECT * FROM member
+	</select>
+</mapper>
