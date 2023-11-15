@@ -39,7 +39,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>chapter10.MVCConfig</param-value>
+			<param-value>chapter11.MVCConfig</param-value>
 		</init-param>
 		
 		<load-on-startup>1</load-on-startup>

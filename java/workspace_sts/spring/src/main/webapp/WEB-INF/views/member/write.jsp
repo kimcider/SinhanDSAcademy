@@ -9,6 +9,7 @@
 <body>
 	<form action="regist.do" method="post" enctype="multipart/form-data">
 		아이디: <input type="text" name="id"><br>
+		비밀번호: <input type="password" name="password"><br>
 		이름 : <input type="text" name="name"><br>
 		취미 : 
 			<input type="checkbox" value="게임" name="hobbyname">게임
