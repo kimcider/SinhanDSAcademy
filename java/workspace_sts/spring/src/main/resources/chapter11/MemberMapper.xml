@@ -23,4 +23,9 @@
 	<select id="list" resultType="chapter11.MemberVO">
 		SELECT * FROM member
 	</select>
+	
+	<select id="login" resultType="chapter11.MemberVO" parameterType="chapter11.MemberVO">
+			<!-- 여기서 password는 암호화되었기 때문에 반드시 MD5안에 넣어야함.  -->
+		SELECT * FROM member WHERE id=#{id} and password=MD5(#{password})
+	</select>
 </mapper>

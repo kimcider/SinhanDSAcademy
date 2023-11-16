@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="chapter11.MemberMapper">
-	<insert id="insertMember" parameterType="chapter11.MemberVO">
+<mapper namespace="chapter12.MemberMapper">
+	<insert id="insertMember" parameterType="chapter12.MemberVO">
 		INSERT INTO member (
 			id, name, filename_org, filename_real, password
 		) VALUES (
@@ -12,7 +12,7 @@
 		</selectKey>
 	</insert>
 	
-	<insert id="insertHobby" parameterType="chapter11.HobbyVO">
+	<insert id="insertHobby" parameterType="chapter12.HobbyVO">
 		INSERT INTO hobby(
 			hobbyname, member_no
 		) VALUES(
@@ -20,11 +20,11 @@
 		)
 	</insert>
 	
-	<select id="list" resultType="chapter11.MemberVO">
+	<select id="list" resultType="chapter12.MemberVO">
 		SELECT * FROM member
 	</select>
 	
-	<select id="login" resultType="chapter11.MemberVO" parameterType="chapter11.MemberVO">
+	<select id="login" resultType="chapter12.MemberVO" parameterType="chapter12.MemberVO">
 			<!-- 여기서 password는 암호화되었기 때문에 반드시 MD5안에 넣어야함.  -->
 		SELECT * FROM member WHERE id=#{id} and password=MD5(#{password})
 	</select>

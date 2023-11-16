@@ -1,4 +1,4 @@
-package chapter11;
+package chapter12;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,9 +26,9 @@ import com.zaxxer.hikari.HikariDataSource;
 import util.LoginInterceptor;
 
 @Configuration
-@ComponentScan(basePackages = {"chapter11"})
+@ComponentScan(basePackages = {"chapter12"})
 @EnableWebMvc
-@MapperScan(basePackages = {"chapter11"}, annotationClass = Mapper.class)
+@MapperScan(basePackages = {"chapter12"}, annotationClass = Mapper.class)
 @EnableTransactionManagement
 public class MVCConfig implements WebMvcConfigurer{
 	//DB접속정보

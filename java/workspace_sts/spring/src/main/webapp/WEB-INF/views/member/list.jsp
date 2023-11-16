@@ -23,16 +23,20 @@
 				<td>${vo.id } </td>
 				<td>${vo.name } </td>
 				<td>${vo.filename_org } </td>
-				<td>
-					<form action="download.do">
-						<input type="hidden" name="filename_org" value="${vo.filename_org }">
-						<input type="hidden" name="filename_real" value="${vo.filename_real }">
-						<input type="submit" value="다운로드">
-					</form>
-				</td>
+					<td>
+						<form action="download.do">
+							<input type="hidden" name="filename_org" value="${vo.filename_org }">
+							<input type="hidden" name="filename_real" value="${vo.filename_real }">
+							<input type="submit" value="다운로드">
+						</form>
+					</td>
 			</tr>
 		</c:forEach>
-	
+		
 	</table>
+	
+	<c:if test="${!empty loginSess }">
+		<input type="button" value="등록" onclick="location.href='regist.do';">
+	</c:if>
 </body>
 </html>
